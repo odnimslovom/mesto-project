@@ -1,0 +1,18 @@
+.header__logo {
+  width: 103.7px;
+  height: 24.4px;
+  padding-left: 27px;
+}
+
+.header__logo:hover {
+  cursor: pointer;
+  transition: opacity .2s linear;
+  opacity: .6;
+}
+
+@media (min-width: 768px) {
+  .header__logo {
+    width: 142px;
+    height: 33px;
+  }
+}
