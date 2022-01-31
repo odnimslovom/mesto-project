@@ -1,0 +1,15 @@
+.profile__button_add {
+  margin: 0 auto;
+  padding: 17px 0;
+  width: 282px;
+  min-height: 54px;
+  background: content-box url(../../../../images/icons/plus.svg) center/contain no-repeat;
+  border: 2px solid var(--white);
+}
+
+@media (min-width: 768px) {
+  .profile__button_add {
+    width: 150px;
+    height: 50px;
+  }
+}

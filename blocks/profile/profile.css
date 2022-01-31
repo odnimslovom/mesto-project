@@ -1,0 +1,30 @@
+.profile {
+  margin: 0 auto;
+  padding-top: 42px;
+  width: calc(100% - 2 * 19px);
+  display: grid;
+  grid-template: auto / 1fr;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .profile {
+    width: 89.34%;
+    grid-template: auto / 120px 1fr 150px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .profile {
+    width: 78.74%;;
+    grid-template: auto / 120px 1fr 150px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .profile {
+    width: calc(100% - 2 * 200px);
+    grid-template: auto / 120px 1fr 150px;
+  }
+}
+

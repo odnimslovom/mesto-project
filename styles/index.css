@@ -1,4 +1,4 @@
-/* Basic*/
+/* Basic */
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts.css);
 @import url(../styles/variables.css);
@@ -8,5 +8,17 @@
 /* Header */
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
+
+
+/* Profile */
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__button/profile__button.css);
+@import url(../blocks/profile/__button/_edit/profile__button_edit.css);
+@import url(../blocks/profile/__status/profile__status.css);
+@import url(../blocks/profile/__button/_add/profile__button_add.css);
+
 /* Footer */
 
