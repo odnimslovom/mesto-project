@@ -1,0 +1,11 @@
+.popup__button {
+  display: block;
+  border: none;
+  color: var(--white);
+}
+
+.profile__button:hover {
+  cursor: pointer;
+  transition: opacity .2s linear;
+  opacity: .6;
+}

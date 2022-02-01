@@ -8,6 +8,7 @@
   justify-content: center;
   grid-template: 26px 14px / min-content 18px;
   gap: 14px 10px;
+  z-index: 1;
 }
 
 @media (min-width: 768px) {
