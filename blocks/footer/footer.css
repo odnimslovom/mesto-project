@@ -1,0 +1,30 @@
+.footer {
+  margin: 0 auto;
+  padding-top: 48px;
+  padding-bottom: 36px;
+  width: calc(100% - 2 * 19px);
+}
+
+@media (min-width: 768px) {
+  .footer {
+    padding-top: 52px;
+    padding-bottom: 46px;
+    width: 89.34%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer {
+    padding-top: 56px;
+    padding-bottom: 56px;
+    width: 78.74%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .footer {
+    padding-top: 60px;
+    padding-bottom: 67px;
+    width: calc(100% - 2 * 200px);
+  }
+}
