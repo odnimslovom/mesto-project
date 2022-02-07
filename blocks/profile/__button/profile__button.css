@@ -1,7 +1,6 @@
 .profile__button {
   background-color: var(--black);
   color: var(--white);
-  border-radius: 2px;
   box-sizing: border-box;
 }
 

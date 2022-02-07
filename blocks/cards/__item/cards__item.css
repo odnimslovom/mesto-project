@@ -1,10 +1,10 @@
 .cards__item {
   width: 100%;
   max-width: 282px;
-  height: 361px;
+  min-height: 361px;
   display: flex;
   flex-direction: column;
-  border-radius: 2px;
+  border-radius: 10px;
   overflow: hidden;
   background-color: var(--white);
   color: var(--black);
