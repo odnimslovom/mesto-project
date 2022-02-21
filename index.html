@@ -14,17 +14,38 @@
 
 <body class="page">
 
-  <div class="popup">
+  <div class="popup popup__edit-profile">
     <div class="popup__container">
       <button class="popup__button popup__button_type_close" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name="profile-edit">
-        <input class="popup__form-item" type="text" name="name" id="name" placeholder="Жак-Ив Кусто">
-        <input class="popup__form-item" type="text" name="status" id="status" placeholder="Исследователь океана">
+        <input class="popup__form-item" type="text" name="name" id="name" placeholder="Имя">
+        <input class="popup__form-item" type="text" name="status" id="status" placeholder="О себе">
+        <button class="popup__button popup__button_type_save" type="submit">Сохранить</button>
       </form>
-      <button class="popup__button popup__button_type_save" type="submit">Сохранить</button>
     </div>
   </div>
+
+  <div class="popup popup__add-card">
+    <div class="popup__container">
+      <button class="popup__button popup__button_type_close" type="button"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form" name="profile-edit">
+        <input class="popup__form-item" type="text" name="name" id="name" placeholder="Название">
+        <input class="popup__form-item" type="text" name="link" id="link" placeholder="Ссылка на картинку">
+        <button class="popup__button popup__button_type_save" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup__show-image">
+    <div class="popup__container">
+      <button class="popup__button popup__button_type_close" type="button"></button>
+      <img class="popup__image">
+      <h2 class="popup__title"></h2>
+    </div>
+  </div>
+
 
   <header class="header">
     <a href="#">
@@ -96,6 +117,18 @@
   <footer class="footer">
     <p class="footer__copyright">&copy;&nbsp;2020 Mesto Russia</p>
   </footer>
+
+  <template id="template__card">
+    <li class="cards__item">
+      <img src="./images/photos/church.jpg" alt="Старая церковь в горах" class="cards__image">
+      <div class="cards__container">
+        <h2 class="cards__title">Карачаевск</h2>
+        <button class="cards__like" type="button"></button>
+      </div>
+    </li>
+  </template>
+
+  <script src="./scripts/index.js"></script>
 </body>
 
 </html>

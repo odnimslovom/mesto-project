@@ -1,7 +1,7 @@
 .cards__like {
   display: block;
   min-width: 22px;
-  height: 19px;
+  min-height: 19px;
   background: border-box url(../../../images/icons/heart.svg) center/cover no-repeat;
   border: none;
   background-color: rgba(0, 0, 0, 0);

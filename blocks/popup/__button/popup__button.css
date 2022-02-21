@@ -4,8 +4,8 @@
   color: var(--white);
 }
 
-.profile__button:hover {
+.popup__button:hover {
   cursor: pointer;
   transition: opacity .2s linear;
-  opacity: .6;
+  opacity: .7;
 }
