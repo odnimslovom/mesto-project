@@ -13,7 +13,4 @@
   opacity: .5;
 }
 
-.cards__like:active {
-  background: border-box url(../../../images/icons/black_heart.svg) center/cover no-repeat;
-  opacity: 1;
-}
+
