@@ -31,7 +31,7 @@
       <button class="popup__button popup__button_type_close" type="button"></button>
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__form" name="profile-edit">
-        <input class="popup__form-item" type="text" name="name" id="name" placeholder="Название">
+        <input class="popup__form-item" type="text" name="name" id="place" placeholder="Название">
         <input class="popup__form-item" type="text" name="link" id="link" placeholder="Ссылка на картинку">
         <button class="popup__button popup__button_type_save" type="submit">Сохранить</button>
       </form>
@@ -41,8 +41,8 @@
   <div class="popup popup__show-image">
     <div class="popup__container">
       <button class="popup__button popup__button_type_close" type="button"></button>
-      <img class="popup__image">
-      <h2 class="popup__title"></h2>
+      <img class="popup__image" src="#" alt="">
+      <p class="popup__text"></p>
     </div>
   </div>
 
@@ -79,9 +79,10 @@
 
   <template id="template__card">
     <li class="cards__item">
-      <img src="./images/photos/church.jpg" alt="Старая церковь в горах" class="cards__image">
+      <button class="cards__delete" type="button"></button>
+      <img src="#" alt="" class="cards__image">
       <div class="cards__container">
-        <h2 class="cards__title"></h2>
+        <p class="cards__title"></p>
         <button class="cards__like" type="button"></button>
       </div>
     </li>

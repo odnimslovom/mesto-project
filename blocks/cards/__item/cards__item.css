@@ -8,4 +8,5 @@
   overflow: hidden;
   background-color: var(--white);
   color: var(--black);
+  position: relative;
 }

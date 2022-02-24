@@ -1,6 +1,5 @@
 "use strict";
 
-
 // --------------------- Profile ------------------------
 
 // page profile
@@ -56,6 +55,8 @@ function openPopup(popup){
 // --------------------- End of Profile ------------------
 
 
+
+
 // --------------------- Add card ------------------------
 
 // page cards
@@ -91,11 +92,9 @@ const initialCards = [
 const cardsPopup = document.querySelector('.popup__add-card');
 const cardsPopupBtnClose = cardsPopup.querySelector('.popup__button_type_close');
 const cardsPopupForm = cardsPopup.querySelector('.popup__form');
-const cardsPopupInputName = cardsPopup.querySelector('#name');
+const cardsPopupInputName = cardsPopup.querySelector('#place');
 const cardsPopupInputLink = cardsPopup.querySelector('#link');
 const cardTemplate = document.querySelector("#template__card").content;
-
-
 
 profileBtnAdd.addEventListener('click', function(){
   clearCardsPopupInfo();
@@ -137,6 +136,7 @@ function addCard(card){
   cardElement.querySelector('.cards__image').src = card.link;
   cardElement.querySelector('.cards__image').alt = card.name;
   cardElement.querySelector('.cards__title').textContent = card.name;
+  cardElement.querySelector('.cards__delete').addEventListener('click', clickDeleteBtnHandler);
   cardElement.querySelector('.cards__like').addEventListener('click', function(evt){
     evt.target.classList.toggle('cards__like_active');
   });
@@ -150,6 +150,17 @@ function clearCardsPopupInfo(){
 
 // --------------------- End of Add card ------------------
 
-
+// --------------------- Delete card ------------------
+function clickDeleteBtnHandler(evt){
+  initialCards.forEach( (item, index) => {
+    let target = evt.target.parentElement.querySelector('img');
+    if (item.name === target.alt && item.link === target.src){
+      initialCards.splice(index, 1);
+      renderCards();
+      return;
+    }
+  });
+}
+// --------------------- End of delete card ------------------
 
 
