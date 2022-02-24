@@ -15,6 +15,10 @@
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__form-item/popup__form-item.css);
 @import url(../blocks/popup/__button/_type/popup__button_type_save.css);
+@import url(../blocks/popup/__show-image/popup__show-image.css);
+@import url(../blocks/popup/__image-container/popup__image-container.css);
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__text/popup__text.css);
 
 /* Header */
 @import url(../blocks/header/header.css);

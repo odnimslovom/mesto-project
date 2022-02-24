@@ -1,9 +1,9 @@
 .cards__delete {
+  width: 18px;
+  height: 19px;
   position: absolute;
   top: 20px;
   right: 20px;
-  max-width: 18px;
-  max-height: 19px;
   background: border-box url(../../../images/icons/delete.svg) center/cover no-repeat;
   border: none;
 }

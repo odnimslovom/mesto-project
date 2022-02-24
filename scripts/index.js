@@ -51,14 +51,9 @@ function closePopup(popup){
 function openPopup(popup){
   popup.classList.add('popup_opened');
 }
-
 // --------------------- End of Profile ------------------
 
-
-
-
 // --------------------- Add card ------------------------
-
 // page cards
 const cardsList = document.querySelector('.cards__list');
 const initialCards = [
@@ -135,6 +130,7 @@ function addCard(card){
   const cardElement = cardTemplate.querySelector('.cards__item').cloneNode(true);
   cardElement.querySelector('.cards__image').src = card.link;
   cardElement.querySelector('.cards__image').alt = card.name;
+  cardElement.querySelector('.cards__image').addEventListener('click', clickCardImageHandler);
   cardElement.querySelector('.cards__title').textContent = card.name;
   cardElement.querySelector('.cards__delete').addEventListener('click', clickDeleteBtnHandler);
   cardElement.querySelector('.cards__like').addEventListener('click', function(evt){
@@ -147,7 +143,6 @@ function clearCardsPopupInfo(){
   cardsPopupInputName.value = '';
   cardsPopupInputLink.value = '';
 }
-
 // --------------------- End of Add card ------------------
 
 // --------------------- Delete card ------------------
@@ -164,3 +159,21 @@ function clickDeleteBtnHandler(evt){
 // --------------------- End of delete card ------------------
 
 
+// --------------------- Show card ------------------
+// cards popup
+const showImagePopup = document.querySelector('.popup__show-image');
+const showImagePopupImg = showImagePopup.querySelector('.popup__image');
+const showImagePopupText = showImagePopup.querySelector('.popup__text');
+const showImagePopupBtnClose = showImagePopup.querySelector('.popup__button_type_close');
+
+showImagePopupBtnClose.addEventListener('click', function(){
+  closePopup(showImagePopup);
+});
+
+function clickCardImageHandler(evt) {
+  console.log(evt.target);
+  showImagePopupImg.src = evt.target.src;
+  showImagePopupText.textContent = evt.target.alt;
+  openPopup(showImagePopup);
+}
+// --------------------- End of Show card ------------------
