@@ -3,3 +3,11 @@
   height: 282px;
   object-fit: cover;
 }
+
+.cards__image:hover {
+  z-index: 0;
+  cursor: pointer;
+  opacity: .8;
+  transition: opacity .2s linear;
+}
+

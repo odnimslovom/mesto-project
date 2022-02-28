@@ -1,5 +1,9 @@
 .page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   min-width: 320px;
+  min-height: 100vh;
   margin: auto;
   font-family: 'Inter', Arial, sans-serif;
   background-color: var(--black);
