@@ -1,6 +1,5 @@
 "use strict";
 
-// --------------------- Profile ------------------------
 // page profile
 const profile = document.querySelector('.profile');
 const profileBtnEdit = profile.querySelector('.profile__button_type_edit');
@@ -15,45 +14,7 @@ const profilePopupForm = profilePopup.querySelector('.popup__form');
 const profilePopupInputName = profilePopupForm.querySelector('#name');
 const profilePopupInputStatus = profilePopupForm.querySelector('#status');
 
-
-profileBtnEdit.addEventListener('click', function () {
-  updateProfileEditForm();
-  openPopup(profilePopup);
-});
-
-profilePopupBtnClose.addEventListener('click', function () {
-  closePopup(profilePopup);
-});
-
-profilePopupForm.addEventListener('submit', submitProfileFormHandler);
-
-function submitProfileFormHandler(event) {
-  event.preventDefault();
-  updateProfileInfo();
-  closePopup(profilePopup);
-}
-
-function updateProfileInfo() {
-  profileName.textContent = profilePopupInputName.value;
-  profileStatus.textContent = profilePopupInputStatus.value;
-}
-
-function updateProfileEditForm() {
-  profilePopupInputName.value = profileName.textContent;
-  profilePopupInputStatus.value = profileStatus.textContent;
-}
-
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-}
-
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
-}
-// --------------------- End of Profile ------------------
-
-// --------------------- Add card ------------------------
-// page cards
+//  cards
 const cardsList = document.querySelector('.cards__list');
 const initialCards = [{
     name: 'Архыз',
@@ -80,8 +41,7 @@ const initialCards = [{
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
-// add card popup
+// add-card popup
 const cardsPopup = document.querySelector('.popup__add-card');
 const cardsPopupBtnClose = cardsPopup.querySelector('.popup__button_type_close');
 const cardsPopupForm = cardsPopup.querySelector('.popup__form');
@@ -89,18 +49,35 @@ const cardsPopupInputName = cardsPopup.querySelector('#place');
 const cardsPopupInputLink = cardsPopup.querySelector('#link');
 const cardTemplate = document.querySelector("#template__card").content;
 
-profileBtnAdd.addEventListener('click', function () {
-  clearCardsPopupInfo();
-  openPopup(cardsPopup);
-});
+// image popup
+const showImagePopup = document.querySelector('.popup__show-image');
+const showImagePopupImg = showImagePopup.querySelector('.popup__image');
+const showImagePopupText = showImagePopup.querySelector('.popup__text');
+const showImagePopupBtnClose = showImagePopup.querySelector('.popup__button_type_close');
 
-cardsPopupBtnClose.addEventListener('click', function () {
-  closePopup(cardsPopup);
-});
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
 
-cardsPopupForm.addEventListener('submit', submitCardsFormHandler);
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+}
 
-renderCards();
+function updateProfileInfo() {
+  profileName.textContent = profilePopupInputName.value;
+  profileStatus.textContent = profilePopupInputStatus.value;
+}
+
+function updateProfileEditForm() {
+  profilePopupInputName.value = profileName.textContent;
+  profilePopupInputStatus.value = profileStatus.textContent;
+}
+
+function submitProfileFormHandler(event) {
+  event.preventDefault();
+  updateProfileInfo();
+  closePopup(profilePopup);
+}
 
 function submitCardsFormHandler(event) {
   event.preventDefault();
@@ -141,9 +118,7 @@ function clearCardsPopupInfo() {
   cardsPopupInputName.value = '';
   cardsPopupInputLink.value = '';
 }
-// --------------------- End of Add card ------------------
 
-// --------------------- Delete card ------------------
 function clickDeleteBtnHandler(evt) {
   initialCards.forEach((item, index) => {
     let target = evt.target.parentElement.querySelector('img');
@@ -154,23 +129,40 @@ function clickDeleteBtnHandler(evt) {
     }
   });
 }
-// --------------------- End of delete card ------------------
-
-
-// --------------------- Show card ------------------
-// cards popup
-const showImagePopup = document.querySelector('.popup__show-image');
-const showImagePopupImg = showImagePopup.querySelector('.popup__image');
-const showImagePopupText = showImagePopup.querySelector('.popup__text');
-const showImagePopupBtnClose = showImagePopup.querySelector('.popup__button_type_close');
-
-showImagePopupBtnClose.addEventListener('click', function () {
-  closePopup(showImagePopup);
-});
 
 function clickCardImageHandler(evt) {
   showImagePopupImg.src = evt.target.src;
   showImagePopupText.textContent = evt.target.alt;
   openPopup(showImagePopup);
 }
-// --------------------- End of Show card ------------------
+
+// profile buttons and form
+profileBtnEdit.addEventListener('click', function () {
+  updateProfileEditForm();
+  openPopup(profilePopup);
+});
+
+profileBtnAdd.addEventListener('click', function () {
+  clearCardsPopupInfo();
+  openPopup(cardsPopup);
+});
+
+profilePopupBtnClose.addEventListener('click', function () {
+  closePopup(profilePopup);
+});
+
+profilePopupForm.addEventListener('submit', submitProfileFormHandler);
+
+// add card
+cardsPopupBtnClose.addEventListener('click', function () {
+  closePopup(cardsPopup);
+});
+
+cardsPopupForm.addEventListener('submit', submitCardsFormHandler);
+
+// show card image popup
+showImagePopupBtnClose.addEventListener('click', function () {
+  closePopup(showImagePopup);
+});
+
+renderCards();
