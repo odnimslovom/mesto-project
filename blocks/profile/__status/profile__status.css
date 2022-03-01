@@ -1,6 +1,7 @@
 .profile__status {
   margin: 0;
   padding: 0;
+  max-width: 220px;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -13,8 +14,21 @@
 
 @media (min-width: 768px) {
   .profile__status {
+    max-width: 295px;
     font-size: 18px;
     line-height: 22px;
     text-align: left;
+  }
+}
+
+@media (min-width: 1024px) {
+  .profile__status {
+    max-width: 360px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .profile__status {
+    max-width: 420px;
   }
 }
