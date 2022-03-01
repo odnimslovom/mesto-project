@@ -14,81 +14,81 @@
 
 <body class="page">
 
-  <div class="popup popup__edit-profile">
-    <div class="popup__container">
-      <button class="popup__button popup__button_type_close" type="button"></button>
-      <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="profile-edit">
-        <input class="popup__form-item" type="text" name="name" id="name" placeholder="Имя" required>
-        <input class="popup__form-item" type="text" name="status" id="status" placeholder="О себе" required>
-        <button class="popup__button popup__button_type_save" type="submit">Сохранить</button>
-      </form>
-    </div>
+<div class="popup popup_type_edit-profile">
+  <div class="popup__container">
+    <button class="popup__button popup__button_type_close" type="button"></button>
+    <h2 class="popup__title">Редактировать профиль</h2>
+    <form class="popup__form" name="profile-edit">
+      <input class="popup__form-item popup__form-item_type_name" type="text" name="name" placeholder="Имя" required>
+      <input class="popup__form-item popup__form-item_type_status" type="text" name="status" placeholder="О себе" required>
+      <button class="popup__button popup__button_type_save" type="submit">Сохранить</button>
+    </form>
   </div>
+</div>
 
-  <div class="popup popup__add-card">
-    <div class="popup__container">
-      <button class="popup__button popup__button_type_close" type="button"></button>
-      <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form" name="profile-edit">
-        <input class="popup__form-item" type="text" name="name" id="place" placeholder="Название" required>
-        <input class="popup__form-item" type="text" name="link" id="link" placeholder="Ссылка на картинку" required>
-        <button class="popup__button popup__button_type_save" type="submit">Сохранить</button>
-      </form>
-    </div>
+<div class="popup popup_type_add-card">
+  <div class="popup__container">
+    <button class="popup__button popup__button_type_close" type="button"></button>
+    <h2 class="popup__title">Новое место</h2>
+    <form class="popup__form" name="profile-edit">
+      <input class="popup__form-item popup__form-item_type_name" type="text" name="name" placeholder="Название" required>
+      <input class="popup__form-item popup__form-item_type_link" type="url" name="link" placeholder="Ссылка на картинку" required>
+      <button class="popup__button popup__button_type_save" type="submit">Сохранить</button>
+    </form>
   </div>
+</div>
 
-  <div class="popup popup__show-image">
-    <div class="popup__image-container">
-      <button class="popup__button popup__button_type_close" type="button"></button>
-      <img class="popup__image" src="#" alt="">
-      <p class="popup__text"></p>
-    </div>
+<div class="popup popup_type_show-image">
+  <div class="popup__image-container">
+    <button class="popup__button popup__button_type_close" type="button"></button>
+    <img class="popup__image" src="#" alt="">
+    <p class="popup__text"></p>
   </div>
+</div>
 
 
-  <header class="header">
-    <a href="#">
-      <img src="./images/logo_white.svg" alt="Mesto-Russia. Логотип" class="header__logo">
-    </a>
-  </header>
+<header class="header">
+  <a href="#">
+    <img src="./images/logo_white.svg" alt="Mesto-Russia. Логотип" class="header__logo">
+  </a>
+</header>
 
-  <main class="content">
+<main class="content">
 
-    <section class="profile">
-      <img src="./images/profile/profile_icon.jpg" alt="Аватар профиля." class="profile__avatar">
-      <div class="profile__info">
-        <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <button class="profile__button profile__button_type_edit" type="button"></button>
-        <p class="profile__status">Исследователь океана</p>
-      </div>
-      <button class="profile__button profile__button_type_add" type="button"></button>
-    </section>
+  <section class="profile">
+    <img src="./images/profile/profile_icon.jpg" alt="Аватар профиля." class="profile__avatar">
+    <div class="profile__info">
+      <h1 class="profile__name">Жак-Ив Кусто</h1>
+      <button class="profile__button profile__button_type_edit" type="button"></button>
+      <p class="profile__status">Исследователь океана</p>
+    </div>
+    <button class="profile__button profile__button_type_add" type="button"></button>
+  </section>
 
-    <section class="cards">
-      <ul class="cards__list">
+  <section class="cards">
+    <ul class="cards__list">
 
-      </ul>
-    </section>
+    </ul>
+  </section>
 
-  </main>
+</main>
 
-  <footer class="footer">
-    <p class="footer__copyright">&copy;&nbsp;2020 Mesto Russia</p>
-  </footer>
+<footer class="footer">
+  <p class="footer__copyright">&copy;&nbsp;2020 Mesto Russia</p>
+</footer>
 
-  <template id="template__card">
-    <li class="cards__item">
-      <button class="cards__delete" type="button"></button>
-      <img src="#" alt="" class="cards__image">
-      <div class="cards__container">
-        <p class="cards__title"></p>
-        <button class="cards__like" type="button"></button>
-      </div>
-    </li>
-  </template>
-
-  <script src="./scripts/index.js"></script>
+<template id="template__card">
+  <li class="cards__item">
+    <button class="cards__delete" type="button"></button>
+    <img src="#" alt="" class="cards__image">
+    <div class="cards__container">
+      <p class="cards__title"></p>
+      <button class="cards__like" type="button"></button>
+    </div>
+  </li>
+</template>
+<script type="module" src="./scripts/initial-cards.js"></script>
+<script type="module" src="./scripts/index.js"></script>
 </body>
 
 </html>
