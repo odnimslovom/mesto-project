@@ -1,7 +1,7 @@
 
 import {
   profilePopup, profileName, profileStatus, profilePopupInputName,
-  profilePopupInputStatus, cardsAddPopup, cardsPopupForm, imagePopup, errorList,
+  profilePopupInputStatus, cardsAddPopup, cardsPopupForm, imagePopup
 } from "./variables.js";
 
 profilePopup.addEventListener('click', function (evt){
@@ -13,6 +13,12 @@ profilePopup.addEventListener('click', function (evt){
 cardsAddPopup.addEventListener('click', function (evt){
   if (evt.target.classList.contains('popup_opened')){
     closePopup(cardsAddPopup);
+  }
+});
+
+imagePopup.addEventListener('click', function (evt){
+  if (evt.target.classList.contains('popup_opened')){
+    closePopup(imagePopup);
   }
 });
 
