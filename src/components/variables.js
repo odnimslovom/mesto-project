@@ -6,7 +6,6 @@ export const validationOptions = {
   inputInvalidElementClass: '.popup__form-item_type_invalid',
   errorActiveElementClass: 'popup__form-error_type_active',
 };
-export const errorList = document.querySelectorAll('.popup__form-error');
 // page profile
 export const profile = document.querySelector('.profile');
 export const profileBtnEdit = profile.querySelector('.profile__button_type_edit');
