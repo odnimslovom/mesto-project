@@ -1,7 +1,7 @@
 import {enableValidation} from "./validation.js";
 import {
   validationOptions, profilePopup, profileName, profileStatus, profilePopupInputName,
-  profilePopupInputStatus, cardsAddPopup, cardsPopupForm, imagePopup,
+  profilePopupInputStatus, cardsAddPopup, cardsPopupForm, imagePopup, errorList,
 } from "./variables.js";
 
 export function openPopup(popup) {
@@ -12,6 +12,11 @@ export function openPopup(popup) {
 
 export function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  errorList.forEach( errorItem => {
+    if (popup.contains(errorItem)) {
+      errorItem.classList.remove('popup__form-error_type_active');
+    }
+  });
 }
 
 function handlePopupCloseActions(popup) {
