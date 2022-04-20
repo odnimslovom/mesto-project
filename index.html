@@ -19,8 +19,16 @@
     <button class="popup__button popup__button_type_close" type="button"></button>
     <h2 class="popup__title">Редактировать профиль</h2>
     <form class="popup__form" name="profile-edit">
-      <input class="popup__form-item popup__form-item_type_name" type="text" name="name" placeholder="Имя" required>
-      <input class="popup__form-item popup__form-item_type_status" type="text" name="status" placeholder="О себе" required>
+      <label class="popup__form-label">
+        <input class="popup__form-item popup__form-item_type_name" type="text" name="name" placeholder="Имя"
+               required autocomplete="off">
+        <span class="popup__form-error">Error</span>
+      </label>
+      <label class="popup__form-label">
+        <input class="popup__form-item popup__form-item_type_status" type="text" name="status" placeholder="О себе"
+               required autocomplete="off">
+        <span class="popup__form-error">Error</span>
+      </label>
       <button class="popup__button popup__button_type_save" type="submit">Сохранить</button>
     </form>
   </div>
@@ -31,8 +39,17 @@
     <button class="popup__button popup__button_type_close" type="button"></button>
     <h2 class="popup__title">Новое место</h2>
     <form class="popup__form" name="profile-edit">
-      <input class="popup__form-item popup__form-item_type_name" type="text" name="name" placeholder="Название" required>
-      <input class="popup__form-item popup__form-item_type_link" type="url" name="link" placeholder="Ссылка на картинку" required>
+      <label class="popup__form-label">
+        <input class="popup__form-item popup__form-item_type_name" type="text" name="name" placeholder="Название"
+               required autocomplete="off">
+        <span class="popup__form-error">Error</span>
+      </label>
+      <label class="popup__form-label">
+        <input class="popup__form-item popup__form-item_type_link" type="url" name="link"
+               placeholder="Ссылка на картинку"
+               required autocomplete="off">
+        <span class="popup__form-error">Error</span>
+      </label>
       <button class="popup__button popup__button_type_save" type="submit">Сохранить</button>
     </form>
   </div>

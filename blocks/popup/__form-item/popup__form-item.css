@@ -1,7 +1,7 @@
 .popup__form-item {
   display: block;
-  margin: 0 auto 30px;
-  padding: 0 0 13px 0;
+  margin: 0 auto;
+  padding: 13px 0;
   min-width: 238px;
   border: none;
   outline: none;
@@ -12,16 +12,8 @@
   color: var(--black);
 }
 
-.popup__form-item:last-child {
-  margin-bottom: 45px;
-}
-
 @media (min-width: 1024px) {
   .popup__form-item {
     min-width: 358px;
-  }
-
-  .popup__form-item:last-child {
-    margin-bottom: 48px;
   }
 }
