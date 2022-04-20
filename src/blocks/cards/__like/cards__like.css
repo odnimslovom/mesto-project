@@ -2,9 +2,8 @@
   display: block;
   min-width: 22px;
   min-height: 19px;
-  background: border-box url(../../../images/icons/heart.svg) center/cover no-repeat;
   border: none;
-  background-color: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0) url(../../../images/heart.svg) no-repeat center;
 }
 
 .cards__like:hover {

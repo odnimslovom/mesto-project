@@ -3,7 +3,7 @@
   padding: 5.25px;
   width: 18px;
   height: 18px;
-  background: content-box url(../../../../images/icons/edit.svg) center/contain no-repeat;
+  background: content-box url(../../../../images/edit.svg) center/contain no-repeat;
   border: 1px solid var(--white);
 }
 

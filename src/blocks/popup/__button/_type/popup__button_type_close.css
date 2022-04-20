@@ -6,7 +6,7 @@
   padding: 0;
   width: 20px;
   height: 20px;
-  background: url(../../../../images/icons/close.svg) center/cover no-repeat;
+  background: url(../../../../images/close.svg) center/cover no-repeat;
 }
 
 @media (min-width: 1024px) {

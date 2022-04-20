@@ -4,7 +4,7 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  background: border-box url(../../../images/icons/delete.svg) center/cover no-repeat;
+  background: border-box url(../../../images/delete.svg) center/cover no-repeat;
   border: none;
   z-index: 10;
 }
