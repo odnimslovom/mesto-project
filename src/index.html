@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Лучшие места России">
+  <meta name="keywords" content="Путешествие, Россия, Фото, Место">
+  <meta name="author" content="Drew Paramonov">
+  <title>Mesto-project</title>
+</head>
+
+<body class="page">
+
+<div class="popup popup_type_edit-profile">
+  <div class="popup__container">
+    <button class="popup__button popup__button_type_close" type="button"></button>
+    <h2 class="popup__title">Редактировать профиль</h2>
+    <form class="popup__form" name="profile-edit">
+      <label class="popup__form-label">
+        <input class="popup__form-input popup__form-item_type_name" id="profile-name" type="text" name="name"
+               placeholder="Имя" minlength="2" maxlength="40" required autocomplete="off">
+        <span class="popup__form-error" id="profile-name-error"></span>
+      </label>
+      <label class="popup__form-label">
+        <input class="popup__form-input popup__form-item_type_status" id="profile-status" type="text" name="status"
+               placeholder="О себе" minlength="2" maxlength="200" required autocomplete="off">
+        <span class="popup__form-error" id="profile-status-error"></span>
+      </label>
+      <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
+    </form>
+  </div>
+</div>
+
+<div class="popup popup_type_add-card">
+  <div class="popup__container">
+    <button class="popup__button popup__button_type_close" type="button"></button>
+    <h2 class="popup__title">Новое место</h2>
+    <form class="popup__form" name="profile-edit">
+      <label class="popup__form-label">
+        <input class="popup__form-input popup__form-item_type_name" id="place-name" type="text" name="name"
+               placeholder="Название" minlength="2" maxlength="30" required autocomplete="off">
+        <span class="popup__form-error" id="place-name-error"></span>
+      </label>
+      <label class="popup__form-label">
+        <input class="popup__form-input popup__form-item_type_link" id="place-url" type="url" name="link"
+               placeholder="Ссылка на картинку" required autocomplete="off">
+        <span class="popup__form-error" id="place-url-error"></span>
+      </label>
+      <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
+    </form>
+  </div>
+</div>
+
+<div class="popup popup_type_show-image">
+  <div class="popup__image-container">
+    <button class="popup__button popup__button_type_close" type="button"></button>
+    <img class="popup__image" src="" alt="">
+    <p class="popup__text"></p>
+  </div>
+</div>
+
+<header class="header">
+  <a href="#">
+    <img src="<%=require('./images/logo_white.svg')%>" alt="Mesto-Russia. Логотип" class="header__logo">
+  </a>
+</header>
+
+<main class="content">
+  <section class="profile">
+    <img src="<%=require('./images/profile_icon.jpg')%>" alt="Аватар профиля." class="profile__avatar">
+    <div class="profile__info">
+      <h1 class="profile__name">Жак-Ив Кусто</h1>
+      <button class="profile__button profile__button_type_edit" type="button"></button>
+      <p class="profile__status">Исследователь океана</p>
+    </div>
+    <button class="profile__button profile__button_type_add" type="button"></button>
+  </section>
+
+  <section class="cards">
+    <ul class="cards__list"></ul>
+  </section>
+</main>
+
+<footer class="footer">
+  <p class="footer__copyright">&copy;&nbsp;2020 Mesto Russia</p>
+</footer>
+
+<template id="template__card">
+  <li class="cards__item">
+    <button class="cards__delete" type="button"></button>
+    <img src="#" alt="" class="cards__image">
+    <div class="cards__container">
+      <p class="cards__title"></p>
+      <button class="cards__like" type="button"></button>
+    </div>
+  </li>
+</template>
+</body>
+
+</html>
