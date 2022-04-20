@@ -20,14 +20,16 @@
     <h2 class="popup__title">Редактировать профиль</h2>
     <form class="popup__form" name="profile-edit">
       <label class="popup__form-label">
-        <input class="popup__form-input popup__form-item_type_name" id="profile-name" type="text" name="name" placeholder="Имя" minlength="2" maxlength="40" required autocomplete="off">
-        <span class="popup__form-error" id="profile-name-error"></span>
+        <input class="popup__form-item popup__form-item_type_name" type="text" name="name" placeholder="Имя"
+               required autocomplete="off">
+        <span class="popup__form-error">Error</span>
       </label>
       <label class="popup__form-label">
-        <input class="popup__form-input popup__form-item_type_status" id="profile-status" type="text" name="status" placeholder="О себе" minlength="2" maxlength="200" required autocomplete="off">
-        <span class="popup__form-error" id="profile-status-error"></span>
+        <input class="popup__form-item popup__form-item_type_status" type="text" name="status" placeholder="О себе"
+               required autocomplete="off">
+        <span class="popup__form-error">Error</span>
       </label>
-      <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
+      <button class="popup__button popup__button_type_save" type="submit">Сохранить</button>
     </form>
   </div>
 </div>
@@ -38,15 +40,17 @@
     <h2 class="popup__title">Новое место</h2>
     <form class="popup__form" name="profile-edit">
       <label class="popup__form-label">
-        <input class="popup__form-input popup__form-item_type_name" id="place-name" type="text" name="name" placeholder="Название" required autocomplete="off">
-        <span class="popup__form-error" id="place-name-error"></span>
+        <input class="popup__form-item popup__form-item_type_name" type="text" name="name" placeholder="Название"
+               required autocomplete="off">
+        <span class="popup__form-error">Error</span>
       </label>
       <label class="popup__form-label">
-        <input class="popup__form-input popup__form-item_type_link" id="place-url" type="url" name="link"
-               placeholder="Ссылка на картинку" required autocomplete="off">
-        <span class="popup__form-error" id="place-url-error"></span>
+        <input class="popup__form-item popup__form-item_type_link" type="url" name="link"
+               placeholder="Ссылка на картинку"
+               required autocomplete="off">
+        <span class="popup__form-error">Error</span>
       </label>
-      <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
+      <button class="popup__button popup__button_type_save" type="submit">Сохранить</button>
     </form>
   </div>
 </div>
@@ -100,7 +104,7 @@
     </div>
   </li>
 </template>
-<script type="module" src="scripts/cards.js"></script>
+<script type="module" src="./scripts/initial-cards.js"></script>
 <script type="module" src="./scripts/index.js"></script>
 </body>
 

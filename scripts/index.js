@@ -1,6 +1,6 @@
 "use strict";
 
-import {cards} from "./cards.js";
+import {initialCards} from "./initial-cards.js";
 // page profile
 const profile = document.querySelector('.profile');
 const profileBtnEdit = profile.querySelector('.profile__button_type_edit');
@@ -28,34 +28,8 @@ const imagePopupImg = imagePopup.querySelector('.popup__image');
 const imagePopupText = imagePopup.querySelector('.popup__text');
 const imagePopupBtnClose = imagePopup.querySelector('.popup__button_type_close');
 
-const validationOptions = {
-  formElementClass : '.popup__form',
-  inputElementClass: '.popup__form-input',
-  buttonElementClass: '.popup__button_type_submit',
-  buttonInactiveElementClass: 'popup__button_type_inactive',
-  inputInvalidElementClass: '.popup__form-item_type_invalid',
-  errorActiveElementClass: 'popup__form-error_type_active',
-};
-
-
-
-function handlePopupCloseActions(popup) {
-  document.addEventListener('keydown', function (evt){
-    if (evt.key === 'Escape') {
-      closePopup(popup);
-    }
-  });
-  popup.addEventListener('click', function (evt){
-    if (evt.target.classList.contains('popup_opened')){
-      closePopup(popup);
-    }
-  });
-}
-
 function openPopup(popup) {
-  enableValidation(validationOptions);
   popup.classList.add('popup_opened');
-  handlePopupCloseActions(popup);
 }
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
@@ -142,7 +116,7 @@ function addCard(card) {
 }
 
 function renderStartCards() {
-  cards.forEach(card => {
+  initialCards.forEach(card => {
     addCard(card);
   });
 }
@@ -159,68 +133,4 @@ cardsPopupForm.addEventListener('submit', handleSubmitCardsForm);
 imagePopupBtnClose.addEventListener('click', handleImagePopupClose);
 
 renderStartCards();
-
-
-
-function hasInvalidInput(inputList) {
-  return inputList.some( inputElement => {
-    return !inputElement.validity.valid;
-  });
-}
-
-function toggleButtonState(inputList, buttonElement, validationOptions) {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(validationOptions.buttonInactiveElementClass);
-    buttonElement.disabled = true;
-  } else {
-    buttonElement.classList.remove(validationOptions.buttonInactiveElementClass);
-    buttonElement.disabled = false;
-  }
-}
-
-function showInputError(formElement, inputElement, errorMessage, validationOptions) {
-  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.add(validationOptions.inputInvalidElementClass);
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add(validationOptions.errorActiveElementClass);
-}
-
-function hideInputError(formElement, inputElement, validationOptions) {
-  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.remove(validationOptions.inputInvalidElementClass);
-  errorElement.classList.remove(validationOptions.errorActiveElementClass);
-  errorElement.textContent = '';
-}
-
-function checkInputValidity(formElement, inputElement, validationOptions) {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage ,validationOptions);
-  } else {
-    hideInputError(formElement, inputElement, validationOptions);
-  }
-}
-
-function setEventListeners(formElement, validationOptions) {
-  const inputList = Array.from(formElement.querySelectorAll(validationOptions.inputElementClass));
-  const buttonElement = formElement.querySelector(validationOptions.buttonElementClass);
-  toggleButtonState(inputList, buttonElement, validationOptions);
-
-  inputList.forEach( inputElement => {
-    inputElement.addEventListener('input', function (){
-      checkInputValidity(formElement, inputElement, validationOptions);
-      toggleButtonState(inputList, buttonElement, validationOptions);
-    });
-  });
-}
-
-function enableValidation(validationOptions){
-  const formList = Array.from(document.querySelectorAll(validationOptions.formElementClass));
-  formList.forEach( formElement => {
-    formElement.addEventListener('submit', function (evt){
-      evt.preventDefault();
-    });
-    setEventListeners(formElement, validationOptions);
-  });
-}
-
 
