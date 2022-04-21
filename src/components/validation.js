@@ -9,19 +9,18 @@ export function enableValidation(validationOptions) {
 }
 
 function setEventListeners(formElement, validationOptions) {
-  const inputList = Array.from(formElement.querySelectorAll(validationOptions.inputElementClass));
-  const buttonElement = formElement.querySelector(validationOptions.buttonElementClass);
-  toggleButtonState(inputList, buttonElement, validationOptions);
-
-  inputList.forEach(inputElement => {
+  const inputListCards = Array.from(formElement.querySelectorAll(validationOptions.inputElementClass));
+  const buttonSubmitCard = formElement.querySelector(validationOptions.buttonElementClass);
+  toggleButtonState(inputListCards, buttonSubmitCard, validationOptions);
+  inputListCards.forEach(inputElement => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement, validationOptions);
-      toggleButtonState(inputList, buttonElement, validationOptions);
+      toggleButtonState(inputListCards, buttonSubmitCard, validationOptions);
     });
   });
 }
 
-function toggleButtonState(inputList, buttonElement, validationOptions) {
+export function toggleButtonState(inputList, buttonElement, validationOptions) {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(validationOptions.buttonInactiveElementClass);
     buttonElement.disabled = true;

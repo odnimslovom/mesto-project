@@ -1,34 +1,29 @@
-
 import {
-  profilePopup, profileName, profileStatus, profilePopupInputName,
-  profilePopupInputStatus, cardsAddPopup, cardsPopupForm, imagePopup
+  profilePopup,
+  profileName,
+  profileStatus,
+  profilePopupInputName,
+  profilePopupInputStatus,
+  cardsAddPopup,
+  cardsPopupForm,
+  validationOptions,
+  popups,
+  cardInputList,
+  cardAddButton,
+  profileInputList, profileButtonSubmit,
 } from "./variables.js";
+import {toggleButtonState} from "./validation";
 
-profilePopup.addEventListener('click', function (evt){
-  if (evt.target.classList.contains('popup_opened')){
-    closePopup(profilePopup);
-  }
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains('popup__button_type_close')) {
+      closePopup(popup);
+    }
+  });
 });
-
-cardsAddPopup.addEventListener('click', function (evt){
-  if (evt.target.classList.contains('popup_opened')){
-    closePopup(cardsAddPopup);
-  }
-});
-
-imagePopup.addEventListener('click', function (evt){
-  if (evt.target.classList.contains('popup_opened')){
-    closePopup(imagePopup);
-  }
-});
-
-
-function closeByEsc(evt) {
-  const openedPopup = document.querySelector('.popup_opened');
-  if (evt.key === 'Escape') {
-    closePopup(openedPopup);
-  }
-}
 
 export function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -38,6 +33,13 @@ export function openPopup(popup) {
 export function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeByEsc);
+}
+
+function closeByEsc(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
 }
 
 function updateProfileEditForm() {
@@ -57,12 +59,9 @@ function removePopupErrors(popup) {
 
 export function handleProfileEditClick() {
   updateProfileEditForm();
+  toggleButtonState(profileInputList, profileButtonSubmit, validationOptions);
   removePopupErrors(profilePopup);
   openPopup(profilePopup);
-}
-
-export function handleProfilePopupCloseClick() {
-  closePopup(profilePopup);
 }
 
 function updateProfile() {
@@ -77,19 +76,12 @@ export function handleSubmitProfileForm(event) {
 }
 
 export function handleProfileAddClick() {
+  toggleButtonState(cardInputList, cardAddButton, validationOptions);
   removePopupErrors(cardsAddPopup);
   openPopup(cardsAddPopup);
 }
 
-export function handleCardsPopupClose() {
-  closePopup(cardsAddPopup);
-}
-
 export function clearCardsPopupInfo() {
   cardsPopupForm.reset();
-}
-
-export function handleImagePopupClose() {
-  closePopup(imagePopup);
 }
 
