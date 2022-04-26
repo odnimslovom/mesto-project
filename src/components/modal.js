@@ -10,9 +10,10 @@ import {
   popups,
   cardInputList,
   cardAddButton,
-  profileInputList, profileButtonSubmit,
+  profileInputList, profileButtonSubmit, profileAvatar,
 } from "./variables.js";
 import {toggleButtonState} from "./validation";
+import {sendUserData} from "./api";
 
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
@@ -58,20 +59,35 @@ function removePopupErrors(popup) {
 }
 
 export function handleProfileEditClick() {
-  updateProfileEditForm();
+  updateProfileEditForm(profilePopupInputName.value, profilePopupInputStatus.value);
   toggleButtonState(profileInputList, profileButtonSubmit, validationOptions);
   removePopupErrors(profilePopup);
   openPopup(profilePopup);
 }
 
-function updateProfile() {
-  profileName.textContent = profilePopupInputName.value;
-  profileStatus.textContent = profilePopupInputStatus.value;
+export function updateProfile(name, status) {
+  profileName.textContent = name;
+  profileStatus.textContent = status;
+}
+
+export function updateAvatar(avatarLink) {
+  profileAvatar.src = avatarLink;
 }
 
 export function handleSubmitProfileForm(event) {
   event.preventDefault();
-  updateProfile();
+  sendUserData().then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      throw new Error(`Error ${res.status}`);
+    }
+  }).then((data) => {
+    updateProfile(data.name, data.about);
+  })
+    .catch((error) => {
+      console.log(`Error: ${error.message}!!!`);
+    });
   closePopup(profilePopup);
 }
 

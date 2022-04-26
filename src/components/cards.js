@@ -1,19 +1,20 @@
 import {
-  initialCards, cardsList, cardTemplate, cardsPopupInputName, cardsPopupInputLink,
+  cardsList, cardTemplate, cardsPopupInputName, cardsPopupInputLink,
   cardsAddPopup, imagePopupImg, imagePopupText, imagePopup
 } from "./variables.js";
 
 import {openPopup, closePopup, clearCardsPopupInfo} from "./modal.js";
+import {requestCardsData, sendCardData} from "./api";
 
 export function renderStartCards() {
-  initialCards.forEach(card => {
-    addCard(card);
-  });
+  requestCardsData().then((data) => {
+    data.forEach(cardElement => addCard({name: cardElement.name, link: cardElement.link}));
+  }).catch((error) => console.log(`Error: ${error.message}!!!`));
 }
 
 function addCard(card) {
   const cardElement = createCardElement(card);
-  cardsList.prepend(cardElement);
+  cardsList.append(cardElement);
 }
 
 function createCardElement(cardData) {
@@ -33,17 +34,17 @@ function createCardElement(cardData) {
   return cardElement;
 }
 
-function getCardInfo() {
-  return {
-    name: cardsPopupInputName.value,
-    link: cardsPopupInputLink.value
-  };
-}
-
 export function handleSubmitCardsForm(event) {
   event.preventDefault();
-  const newCard = getCardInfo();
-  addCard(newCard);
+  sendCardData().then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      throw new Error(`Error ${res.status}`);
+    }
+  }).then((data) => {
+    addCard({name : data.name, link: data.link});
+  }).catch((error) => console.log(`Error: ${error.message}!!!`));
   clearCardsPopupInfo();
   closePopup(cardsAddPopup);
 }
