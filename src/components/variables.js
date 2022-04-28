@@ -27,6 +27,8 @@ export const profileInputList = Array.from(profilePopup.querySelectorAll(validat
 export const profileButtonSubmit = profilePopup.querySelector(validationOptions.buttonElementClass);
 //  cards
 export const cardsList = document.querySelector('.cards__list');
+export const confirmDelPopup = document.querySelector('.popup_type_confirm');
+export const confirmDelButton = confirmDelPopup.querySelector('.popup__button_type_submit');
 // add-card popup
 export const cardsAddPopup = document.querySelector('.popup_type_add-card');
 export const cardsPopupForm = cardsAddPopup.querySelector('.popup__form');

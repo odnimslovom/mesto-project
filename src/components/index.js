@@ -19,8 +19,6 @@ profilePopupForm.addEventListener('submit', handleSubmitProfileForm);
 cardsPopupForm.addEventListener('submit', handleSubmitCardsForm);
 
 getUserData();
-
-renderStartCards();
 enableValidation(validationOptions);
 
 

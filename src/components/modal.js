@@ -80,15 +80,10 @@ export function updateAvatar(avatarLink) {
 
 export function handleSubmitProfileForm(event) {
   event.preventDefault();
-  sendUserData().then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw new Error(`Error ${res.status}`);
-    }
-  }).then((data) => {
-    updateProfile(data.name, data.about);
-  })
+  sendUserData()
+    .then((data) => {
+      updateProfile(data.name, data.about);
+    })
     .catch((error) => {
       console.log(`Error: ${error.message}!!!`);
     });

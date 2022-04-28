@@ -1,10 +1,8 @@
 import {
   cardsPopupInputLink,
   cardsPopupInputName,
-  profileName,
   profilePopupInputName,
   profilePopupInputStatus,
-  profileStatus
 } from "./variables";
 
 const API_URL = 'https://nomoreparties.co/v1/plus-cohort-9/';
@@ -52,6 +50,12 @@ export function sendUserData() {
       name: profilePopupInputName.value,
       about: profilePopupInputStatus.value
     })
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      throw new Error(`Error ${res.status}`);
+    }
   });
 }
 
@@ -66,5 +70,25 @@ export function sendCardData() {
       name: cardsPopupInputName.value,
       link: cardsPopupInputLink.value
     })
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      throw new Error(`Error ${res.status}`);
+    }
+  });
+}
+
+export function deleteCardData(cardId) {
+  return fetch(API_URL + `cards/${cardId}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: AUTH_TOKEN,
+      'Content-Type': 'application/json'
+    }
+  }).then((res) => {
+    if (!res.ok) {
+      throw new Error(`Error ${res.status}`);
+    }
   });
 }
