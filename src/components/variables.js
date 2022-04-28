@@ -7,13 +7,17 @@ export const validationOptions = {
   errorActiveElementClass: 'popup__form-error_type_active',
 };
 export const popups = document.querySelectorAll('.popup');
+
 // page profile
 export const profile = document.querySelector('.profile');
 export const profileBtnEdit = profile.querySelector('.profile__button_type_edit');
 export const profileName = profile.querySelector('.profile__name');
 export const profileStatus = profile.querySelector('.profile__status');
 export const profileBtnAdd = profile.querySelector('.profile__button_type_add');
+//avatar
 export const profileAvatar = profile.querySelector('.profile__avatar');
+export const profileBtnAvatarEdit = profile.querySelector('.profile__avatar-edit');
+export const avatarPopup = document.querySelector('.popup_type_add-avatar');
 // profile popup
 export const profilePopup = document.querySelector('.popup_type_edit-profile');
 export const profilePopupForm = profilePopup.querySelector('.popup__form');

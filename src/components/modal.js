@@ -10,7 +10,7 @@ import {
   popups,
   cardInputList,
   cardAddButton,
-  profileInputList, profileButtonSubmit, profileAvatar,
+  profileInputList, profileButtonSubmit, profileAvatar, avatarPopup,
 } from "./variables.js";
 import {toggleButtonState} from "./validation";
 import {sendUserData} from "./api";
@@ -63,6 +63,10 @@ export function handleProfileEditClick() {
   toggleButtonState(profileInputList, profileButtonSubmit, validationOptions);
   removePopupErrors(profilePopup);
   openPopup(profilePopup);
+}
+
+export function handleProfileAvatarEditClick() {
+  openPopup(avatarPopup);
 }
 
 export function updateProfile(name, status) {
