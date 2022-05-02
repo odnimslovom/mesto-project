@@ -10,10 +10,16 @@ import {
   popups,
   cardInputList,
   cardAddButton,
-  profileInputList, profileButtonSubmit, profileAvatar, avatarPopup,
+  profileInputList,
+  profileButtonSubmit,
+  profileAvatar,
+  avatarPopup,
+  avatarButtonSubmit,
+  avatartPopupForm,
+  profilePopupForm,
 } from "./variables.js";
 import {toggleButtonState} from "./validation";
-import {sendUserData} from "./api";
+import {sendAvatarData, sendUserData} from "./api";
 
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
@@ -69,6 +75,20 @@ export function handleProfileAvatarEditClick() {
   openPopup(avatarPopup);
 }
 
+export function handleSubmitAvatar(event) {
+  event.preventDefault();
+  avatarButtonSubmit.textContent = 'Сохранение...';
+  sendAvatarData().then((res) => {
+    updateAvatar(res.avatar);
+    closePopup(avatarPopup);
+  }).catch((error) => {
+    console.log(`Error: ${error.message}!!!`);
+  }).finally(() => {
+    avatarButtonSubmit.textContent = 'Сохранить';
+    avatartPopupForm.reset();
+  });
+}
+
 export function updateProfile(name, status) {
   profileName.textContent = name;
   profileStatus.textContent = status;
@@ -80,14 +100,18 @@ export function updateAvatar(avatarLink) {
 
 export function handleSubmitProfileForm(event) {
   event.preventDefault();
+  profileButtonSubmit.textContent = 'Сохранение...';
   sendUserData()
     .then((data) => {
       updateProfile(data.name, data.about);
+      closePopup(profilePopup);
     })
     .catch((error) => {
       console.log(`Error: ${error.message}!!!`);
-    });
-  closePopup(profilePopup);
+    }).finally(() => {
+      profileButtonSubmit.textContent = 'Сохранить';
+  });
+
 }
 
 export function handleProfileAddClick() {

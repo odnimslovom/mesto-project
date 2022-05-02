@@ -18,6 +18,9 @@ export const profileBtnAdd = profile.querySelector('.profile__button_type_add');
 export const profileAvatar = profile.querySelector('.profile__avatar');
 export const profileBtnAvatarEdit = profile.querySelector('.profile__avatar-edit');
 export const avatarPopup = document.querySelector('.popup_type_add-avatar');
+export const avatartPopupForm = avatarPopup.querySelector('.popup__form');
+export const avatarPopupInputLink = avatarPopup.querySelector('.popup__form-item_type_link');
+export const avatarButtonSubmit = avatarPopup.querySelector('.popup__button_type_submit');
 // profile popup
 export const profilePopup = document.querySelector('.popup_type_edit-profile');
 export const profilePopupForm = profilePopup.querySelector('.popup__form');
