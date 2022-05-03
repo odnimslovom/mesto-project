@@ -3,9 +3,6 @@ import {
   cardInputList,
   cardsAddPopup,
   cardsList,
-  cardsPopupForm,
-  cardsPopupInputLink,
-  cardsPopupInputName,
   cardTemplate,
   imagePopup,
   imagePopupImg,
@@ -13,25 +10,9 @@ import {
   validationOptions
 } from "./variables";
 
-import {clearPopupForm, closePopup, openPopup, removePopupErrors} from "./modal";
-import {deleteCardData, deleteLikeData, requestCardsData, sendCardData, sendLikeData} from "./api";
+import {openPopup, removePopupErrors} from "./modal";
 import {toggleButtonState} from "./validation";
-
-// Загрузка и отрисовка начавльных карточек
-export const renderStartCards = (userId) => {
-  requestCardsData().then((data) => {
-    data.reverse().forEach(card => {
-      addCard(
-        {
-          name: card.name,
-          link: card.link,
-          likeCounter: card.likes.length,
-          isDeletable: card.owner._id === userId,
-          isLiked: card.likes.find(item => item._id === userId) !== undefined
-        }, card._id);
-    });
-  }).catch((error) => console.log(`Error: ${error.message}!!!`));
-};
+import {handleDeleteIconClick, handleLikeClick} from "./index";
 
 // Открыть попап добавления карточки
 export const handleCardAddClick = () => {
@@ -41,9 +22,21 @@ export const handleCardAddClick = () => {
 };
 
 // Добавление карточки в DOM
-const addCard = (cardData, cardId) => {
+export const addCard = (cardData, cardId) => {
   const cardElement = createCardElement(cardData, cardId);
   cardsList.prepend(cardElement);
+};
+
+// Удаление карточки из Dom
+export const handleDeleteCard = (cardElement) => {
+  cardElement.remove();
+  cardElement = null;
+};
+
+// Отображение счетчика лайков
+export const handleLike = (cardLike, likeCounter, numLikes) => {
+  likeCounter.textContent = numLikes;
+  cardLike.classList.toggle('cards__like_active');
 };
 
 // Создание карточки
@@ -72,51 +65,12 @@ const createCardElement = (cardData, cardId) => {
   cardImage.addEventListener('click', handleCardImageClick);
 
   // Удаление карточки
-  cardDelete.addEventListener('click', function (evt) {
-    deleteCardData(cardId)
-      .then(() => {
-        evt.target.closest('.cards__item').remove();
-      })
-      .catch((error) => console.log(`Error: ${error.message}!!!`));
-  });
+  cardDelete.addEventListener('click', () => handleDeleteIconClick(cardId, cardElement));
 
-  // Установка и удаление лайка
-  cardLike.addEventListener('click', function (evt) {
-    if (cardLike.classList.contains('cards__like_active')) {
-      deleteLikeData(cardId)
-        .then((res) => {
-          cardLikesCounter.textContent = res.likes.length;
-          evt.target.classList.remove('cards__like_active');
-        })
-        .catch((error) => console.log(`Error: ${error.message}!!!`));
-    } else {
-      sendLikeData(cardId)
-        .then((res) => {
-          cardLikesCounter.textContent = res.likes.length;
-          evt.target.classList.add('cards__like_active');
-        })
-        .catch((error) => console.log(`Error: ${error.message}!!!`));
-    }
-  });
+  //Обработка нажатия лайка
+  cardLike.addEventListener('click', () => handleLikeClick(cardId, cardLike, cardLikesCounter));
 
   return cardElement;
-};
-
-// Сохранить карточку
-export const handleSubmitCardsForm = (event) => {
-  event.preventDefault();
-  cardAddButton.textContent = 'Сохранение...';
-  sendCardData(cardsPopupInputName.value, cardsPopupInputLink.value)
-    .then((data) => {
-      addCard({name: data.name, link: data.link});
-      closePopup(cardsAddPopup);
-    })
-    .catch((error) => console.log(`Error: ${error.message}!!!`))
-    .finally(() => {
-      clearPopupForm(cardsPopupForm);
-      cardAddButton.textContent = 'Сохранить';
-    });
-
 };
 
 // Просмотр карточки

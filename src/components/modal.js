@@ -1,17 +1,5 @@
 import {popups} from "./variables.js";
 
-// Обработчики закрытия попапов
-popups.forEach((popup) => {
-  popup.addEventListener('mousedown', (evt) => {
-    if (evt.target.classList.contains('popup_opened')) {
-      closePopup(popup);
-    }
-    if (evt.target.classList.contains('popup__button_type_close')) {
-      closePopup(popup);
-    }
-  });
-});
-
 // Обработка открытия и закрытия попапов
 export const openPopup = (popup) => {
   popup.classList.add('popup_opened');
@@ -29,6 +17,18 @@ const closeByEsc = (evt) => {
     closePopup(openedPopup);
   }
 };
+
+// Обработчики закрытия попапов
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains('popup__button_type_close')) {
+      closePopup(popup);
+    }
+  });
+});
 
 // Обработка ошибок при переоткрытии попапа
 export const removePopupErrors = (popup) => {

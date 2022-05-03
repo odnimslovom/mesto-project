@@ -1,6 +1,6 @@
 import {requestUserData, sendAvatarData, sendUserData} from "./api";
 import {clearPopupForm, closePopup, openPopup, removePopupErrors} from "./modal";
-import {renderStartCards} from "./cards";
+import {renderStartCards} from "./index";
 import {
   avatarButtonSubmit,
   avatarPopup,
@@ -22,7 +22,7 @@ import {toggleButtonState} from "./validation";
 export const getUserData = () => {
   requestUserData()
     .then((data) => {
-      let userId = data._id;
+      const userId = data._id;
       updateProfile(data.name, data.about);
       updateAvatar(data.avatar);
       renderStartCards(userId);
