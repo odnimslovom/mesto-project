@@ -41,7 +41,7 @@
 .cards__container{align-items:center;display:flex;justify-content:space-between;padding:25px 15px 30px 20px}
 .cards__title{font-size:24px;font-weight:900;line-height:29px;margin:0;overflow:hidden;padding:0;text-overflow:ellipsis;white-space:nowrap}
 .cards__like{background:transparent url(1ad06e85f169668a1f36.svg) no-repeat 50%;border:none;display:block;min-height:19px;min-width:22px}.cards__like:hover{cursor:pointer;opacity:.5;transition:opacity .2s linear}
-.cards__like_active{background:border-box url(35948469632d0421d697.svg) 50%/cover no-repeat;opacity:1}.cards__like_active:hover{opacity:1}
+.cards__like_active{background:border-box url(35948469632d0421d697.svg) 50%/cover no-repeat;display:block;min-height:19px;min-width:22px;opacity:1}.cards__like_active:hover{opacity:1}
 .cards__delete{background:border-box url(ce3b64935accf9b8212e.svg) 50%/cover no-repeat;border:none;height:19px;position:absolute;right:20px;top:20px;width:18px;z-index:10}.cards__delete:hover{cursor:pointer;opacity:.6;transition:opacity .2s linear}
 .cards__like-container{align-items:center;display:flex;flex-direction:column;justify-content:center}
 .cards__like-counter{font-size:13px;font-weight:400;line-height:16px;margin-top:3px;text-align:center}
