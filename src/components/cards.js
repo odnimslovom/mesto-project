@@ -7,7 +7,7 @@ import {
   imagePopup,
   confirmDelPopup,
   confirmDelButton,
-  cardAddButton
+  cardAddButton, cardsPopupInputName, cardsPopupInputLink
 } from "./variables.js";
 
 import {openPopup, closePopup, clearCardsPopupInfo} from "./modal.js";
@@ -90,7 +90,7 @@ function createCardElement(cardData, cardId) {
 export function handleSubmitCardsForm(event) {
   event.preventDefault();
   cardAddButton.textContent = 'Сохранение...';
-  sendCardData()
+  sendCardData( cardsPopupInputName.value, cardsPopupInputLink.value)
     .then((data) => {
       addCard({name: data.name, link: data.link});
       closePopup(cardsAddPopup);

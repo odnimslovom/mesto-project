@@ -6,8 +6,8 @@ export const validationOptions = {
   inputInvalidElementClass: '.popup__form-item_type_invalid',
   errorActiveElementClass: 'popup__form-error_type_active',
 };
-export const popups = document.querySelectorAll('.popup');
 
+export const popups = document.querySelectorAll('.popup');
 // page profile
 export const profile = document.querySelector('.profile');
 export const profileBtnEdit = profile.querySelector('.profile__button_type_edit');
@@ -44,3 +44,6 @@ export const cardAddButton = cardsAddPopup.querySelector(validationOptions.butto
 export const imagePopup = document.querySelector('.popup_type_show-image');
 export const imagePopupImg = imagePopup.querySelector('.popup__image');
 export const imagePopupText = imagePopup.querySelector('.popup__text');
+// api variables
+export const API_URL = 'https://nomoreparties.co/v1/plus-cohort-9/';
+export const AUTH_TOKEN = '30ee5c2b-3c10-4367-af03-f8ff84e704e6';

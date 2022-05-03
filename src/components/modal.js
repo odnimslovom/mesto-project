@@ -16,7 +16,7 @@ import {
   avatarPopup,
   avatarButtonSubmit,
   avatartPopupForm,
-  profilePopupForm,
+  profilePopupForm, avatarPopupInputLink,
 } from "./variables.js";
 import {toggleButtonState} from "./validation";
 import {sendAvatarData, sendUserData} from "./api";
@@ -78,7 +78,7 @@ export function handleProfileAvatarEditClick() {
 export function handleSubmitAvatar(event) {
   event.preventDefault();
   avatarButtonSubmit.textContent = 'Сохранение...';
-  sendAvatarData().then((res) => {
+  sendAvatarData(avatarPopupInputLink.value).then((res) => {
     updateAvatar(res.avatar);
     closePopup(avatarPopup);
   }).catch((error) => {
@@ -101,7 +101,7 @@ export function updateAvatar(avatarLink) {
 export function handleSubmitProfileForm(event) {
   event.preventDefault();
   profileButtonSubmit.textContent = 'Сохранение...';
-  sendUserData()
+  sendUserData(profilePopupInputName.value, profilePopupInputStatus.value)
     .then((data) => {
       updateProfile(data.name, data.about);
       closePopup(profilePopup);
@@ -109,7 +109,7 @@ export function handleSubmitProfileForm(event) {
     .catch((error) => {
       console.log(`Error: ${error.message}!!!`);
     }).finally(() => {
-      profileButtonSubmit.textContent = 'Сохранить';
+    profileButtonSubmit.textContent = 'Сохранить';
   });
 
 }

@@ -1,54 +1,37 @@
-import {
-  avatarPopupInputLink,
-  cardsPopupInputLink,
-  cardsPopupInputName,
-  profilePopupInputName,
-  profilePopupInputStatus,
-} from "./variables";
+// Запрос данных профиля
+import {API_URL, AUTH_TOKEN} from "./variables";
 
-const API_URL = 'https://nomoreparties.co/v1/plus-cohort-9/';
-const AUTH_TOKEN = '30ee5c2b-3c10-4367-af03-f8ff84e704e6';
+// Проверка ответа сервера
+const checkResponse = (response) => {
+  if (response.ok) {
+    return response.json();
+  } else {
+    return Promise.reject(`Error ${response.status}`);
+  }
+};
 
-// const config = {
-//   baseUrl: 'https://nomoreparties.co/v1/cohort-42',
-//   headers: {
-//     authorization: '30ee5c2b-3c10-4367-af03-f8ff84e704e6',
-//     'Content-Type': 'application/json'
-//   }
-// };
-
-export function requestUserData() {
+// Запрос данных профиля
+export const requestUserData = () => {
   return fetch(API_URL + 'users/me', {
     headers: {
       authorization: AUTH_TOKEN
     }
   })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        throw new Error(`Error ${res.status}`);
-      }
-    });
-}
+    .then(checkResponse);
+};
 
-export function requestCardsData() {
+// Запрос дынных карточек
+export const requestCardsData = () => {
   return fetch(API_URL + 'cards', {
     headers: {
       authorization: AUTH_TOKEN,
       'Content-Type': 'application/json'
     }
-  })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        throw new Error(`Error ${res.status}`);
-      }
-    });
-}
+  }).then(checkResponse);
+};
 
-export function sendUserData() {
+// Обновление данных профиля
+export const sendUserData = (userName, userStatus) => {
   return fetch(API_URL + 'users/me', {
     method: 'PATCH',
     headers: {
@@ -56,19 +39,14 @@ export function sendUserData() {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      name: profilePopupInputName.value,
-      about: profilePopupInputStatus.value
+      name: userName,
+      about: userStatus
     })
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw new Error(`Error ${res.status}`);
-    }
-  });
-}
+  }).then(checkResponse);
+};
 
-export function sendCardData() {
+// Добавление карточки
+export const sendCardData = (cardName, cardLink) => {
   return fetch(API_URL + 'cards', {
     method: 'POST',
     headers: {
@@ -76,19 +54,14 @@ export function sendCardData() {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      name: cardsPopupInputName.value,
-      link: cardsPopupInputLink.value
+      name: cardName,
+      link: cardLink
     })
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw new Error(`Error ${res.status}`);
-    }
-  });
-}
+  }).then(checkResponse);
+};
 
-export function deleteCardData(cardId) {
+// Удаление карточки
+export const deleteCardData = (cardId) => {
   return fetch(API_URL + `cards/${cardId}`, {
     method: 'DELETE',
     headers: {
@@ -97,46 +70,35 @@ export function deleteCardData(cardId) {
     }
   }).then((res) => {
     if (!res.ok) {
-      throw new Error(`Error ${res.status}`);
+      return Promise.reject(`Error ${res.status}`);
     }
   });
-}
+};
 
-export function sendLikeData(cardId) {
+// Добавить лайк карточке
+export const sendLikeData = (cardId) => {
   return fetch(API_URL + `cards/likes/${cardId}`, {
     method: 'PUT',
     headers: {
       authorization: AUTH_TOKEN,
       'Content-Type': 'application/json'
     }
+  }).then(checkResponse);
+};
 
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw new Error(`Error ${res.status}`);
-    }
-  });
-}
-
-export function deleteLikeData(cardId) {
+// Убрать лайк у карточки
+export const deleteLikeData = (cardId) => {
   return fetch(API_URL + `cards/likes/${cardId}`, {
     method: 'DELETE',
     headers: {
       authorization: AUTH_TOKEN,
       'Content-Type': 'application/json'
     }
+  }).then(checkResponse);
+};
 
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw new Error(`Error ${res.status}`);
-    }
-  });
-}
-
-export function sendAvatarData() {
+// Обновление аватара
+export const sendAvatarData = (avatarLink) => {
   return fetch(API_URL + 'users/me/avatar', {
     method: 'PATCH',
     headers: {
@@ -144,13 +106,7 @@ export function sendAvatarData() {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      avatar : avatarPopupInputLink.value,
+      avatar: avatarLink,
     })
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw new Error(`Error ${res.status}`);
-    }
-  });
-}
+  }).then(checkResponse);
+};
