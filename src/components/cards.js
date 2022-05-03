@@ -1,21 +1,26 @@
 import {
-  cardsList,
-  cardTemplate,
+  cardAddButton,
+  cardInputList,
   cardsAddPopup,
+  cardsList,
+  cardsPopupForm,
+  cardsPopupInputLink,
+  cardsPopupInputName,
+  cardTemplate,
+  imagePopup,
   imagePopupImg,
   imagePopupText,
-  imagePopup,
-  confirmDelPopup,
-  confirmDelButton,
-  cardAddButton, cardsPopupInputName, cardsPopupInputLink
-} from "./variables.js";
+  validationOptions
+} from "./variables";
 
-import {openPopup, closePopup, clearCardsPopupInfo} from "./modal.js";
+import {clearPopupForm, closePopup, openPopup, removePopupErrors} from "./modal";
 import {deleteCardData, deleteLikeData, requestCardsData, sendCardData, sendLikeData} from "./api";
+import {toggleButtonState} from "./validation";
 
-export function renderStartCards(userId) {
+// Загрузка и отрисовка начавльных карточек
+export const renderStartCards = (userId) => {
   requestCardsData().then((data) => {
-    data.forEach(card => {
+    data.reverse().forEach(card => {
       addCard(
         {
           name: card.name,
@@ -26,15 +31,23 @@ export function renderStartCards(userId) {
         }, card._id);
     });
   }).catch((error) => console.log(`Error: ${error.message}!!!`));
-}
+};
 
-function addCard(cardData, cardId) {
+// Открыть попап добавления карточки
+export const handleCardAddClick = () => {
+  toggleButtonState(cardInputList, cardAddButton, validationOptions);
+  removePopupErrors(cardsAddPopup);
+  openPopup(cardsAddPopup);
+};
+
+// Добавление карточки в DOM
+const addCard = (cardData, cardId) => {
   const cardElement = createCardElement(cardData, cardId);
   cardsList.prepend(cardElement);
-}
+};
 
-
-function createCardElement(cardData, cardId) {
+// Создание карточки
+const createCardElement = (cardData, cardId) => {
   const cardElement = cardTemplate.querySelector('.cards__item').cloneNode(true);
   const cardImage = cardElement.querySelector('.cards__image');
   const cardTitle = cardElement.querySelector('.cards__title');
@@ -44,7 +57,7 @@ function createCardElement(cardData, cardId) {
 
   cardImage.src = cardData.link;
   cardImage.alt = cardData.name;
-  cardLikesCounter.textContent = cardData.likeCounter;
+  cardLikesCounter.textContent = isNaN(cardData.likeCounter) ? 0 : cardData.likeCounter;
   cardTitle.textContent = cardData.name;
 
   if (!cardData.isDeletable) {
@@ -55,8 +68,10 @@ function createCardElement(cardData, cardId) {
     cardLike.classList.add('cards__like_active');
   }
 
+  // Просмотр карточки
   cardImage.addEventListener('click', handleCardImageClick);
 
+  // Удаление карточки
   cardDelete.addEventListener('click', function (evt) {
     deleteCardData(cardId)
       .then(() => {
@@ -65,6 +80,7 @@ function createCardElement(cardData, cardId) {
       .catch((error) => console.log(`Error: ${error.message}!!!`));
   });
 
+  // Установка и удаление лайка
   cardLike.addEventListener('click', function (evt) {
     if (cardLike.classList.contains('cards__like_active')) {
       deleteLikeData(cardId)
@@ -73,7 +89,6 @@ function createCardElement(cardData, cardId) {
           evt.target.classList.remove('cards__like_active');
         })
         .catch((error) => console.log(`Error: ${error.message}!!!`));
-
     } else {
       sendLikeData(cardId)
         .then((res) => {
@@ -85,30 +100,32 @@ function createCardElement(cardData, cardId) {
   });
 
   return cardElement;
-}
+};
 
-export function handleSubmitCardsForm(event) {
+// Сохранить карточку
+export const handleSubmitCardsForm = (event) => {
   event.preventDefault();
   cardAddButton.textContent = 'Сохранение...';
-  sendCardData( cardsPopupInputName.value, cardsPopupInputLink.value)
+  sendCardData(cardsPopupInputName.value, cardsPopupInputLink.value)
     .then((data) => {
       addCard({name: data.name, link: data.link});
       closePopup(cardsAddPopup);
     })
     .catch((error) => console.log(`Error: ${error.message}!!!`))
     .finally(() => {
-      clearCardsPopupInfo();
+      clearPopupForm(cardsPopupForm);
       cardAddButton.textContent = 'Сохранить';
-  });
+    });
 
-}
+};
 
-function handleCardImageClick(card) {
+// Просмотр карточки
+const handleCardImageClick = (card) => {
   imagePopupImg.src = card.target.src;
   imagePopupImg.alt = card.target.alt;
   imagePopupText.textContent = card.target.alt;
   openPopup(imagePopup);
-}
+};
 
 
 

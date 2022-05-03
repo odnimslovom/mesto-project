@@ -1,12 +1,3 @@
-export const validationOptions = {
-  formElementClass: '.popup__form',
-  inputElementClass: '.popup__form-input',
-  buttonElementClass: '.popup__button_type_submit',
-  buttonInactiveElementClass: 'popup__button_type_inactive',
-  inputInvalidElementClass: '.popup__form-item_type_invalid',
-  errorActiveElementClass: 'popup__form-error_type_active',
-};
-
 export const popups = document.querySelectorAll('.popup');
 // page profile
 export const profile = document.querySelector('.profile');
@@ -18,9 +9,18 @@ export const profileBtnAdd = profile.querySelector('.profile__button_type_add');
 export const profileAvatar = profile.querySelector('.profile__avatar');
 export const profileBtnAvatarEdit = profile.querySelector('.profile__avatar-edit');
 export const avatarPopup = document.querySelector('.popup_type_add-avatar');
-export const avatartPopupForm = avatarPopup.querySelector('.popup__form');
+export const avatarPopupForm = avatarPopup.querySelector('.popup__form');
 export const avatarPopupInputLink = avatarPopup.querySelector('.popup__form-item_type_link');
 export const avatarButtonSubmit = avatarPopup.querySelector('.popup__button_type_submit');
+//Validation options
+export const validationOptions = {
+  formElementClass: '.popup__form',
+  inputElementClass: '.popup__form-input',
+  buttonElementClass: '.popup__button_type_submit',
+  buttonInactiveElementClass: 'popup__button_type_inactive',
+  inputInvalidElementClass: '.popup__form-item_type_invalid',
+  errorActiveElementClass: 'popup__form-error_type_active',
+};
 // profile popup
 export const profilePopup = document.querySelector('.popup_type_edit-profile');
 export const profilePopupForm = profilePopup.querySelector('.popup__form');
@@ -30,8 +30,6 @@ export const profileInputList = Array.from(profilePopup.querySelectorAll(validat
 export const profileButtonSubmit = profilePopup.querySelector(validationOptions.buttonElementClass);
 //  cards
 export const cardsList = document.querySelector('.cards__list');
-export const confirmDelPopup = document.querySelector('.popup_type_confirm');
-export const confirmDelButton = confirmDelPopup.querySelector('.popup__button_type_submit');
 // add-card popup
 export const cardsAddPopup = document.querySelector('.popup_type_add-card');
 export const cardsPopupForm = cardsAddPopup.querySelector('.popup__form');

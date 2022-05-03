@@ -12,6 +12,8 @@
 </head>
 
 <body class="page">
+
+<!-- Редактирование профиля-->
 <div class="popup popup_type_edit-profile">
   <div class="popup__container">
     <button class="popup__button popup__button_type_close" type="button"></button>
@@ -32,6 +34,7 @@
   </div>
 </div>
 
+<!-- Добавление карточки-->
 <div class="popup popup_type_add-card">
   <div class="popup__container">
     <button class="popup__button popup__button_type_close" type="button"></button>
@@ -52,6 +55,7 @@
   </div>
 </div>
 
+<!-- Редактирование аватара-->
 <div class="popup popup_type_add-avatar">
   <div class="popup__container">
     <button class="popup__button popup__button_type_close" type="button"></button>
@@ -67,6 +71,7 @@
   </div>
 </div>
 
+<!-- Подтверждение удаления карточки-->
 <div class="popup popup_type_confirm">
   <div class="popup__container">
     <button class="popup__button popup__button_type_close" type="button"></button>
@@ -77,6 +82,7 @@
   </div>
 </div>
 
+<!-- Просмотр карточки-->
 <div class="popup popup_type_show-image">
   <div class="popup__image-container">
     <button class="popup__button popup__button_type_close" type="button"></button>
@@ -84,6 +90,7 @@
     <p class="popup__text"></p>
   </div>
 </div>
+
 
 <div class="page__content">
   <header class="header">
@@ -95,14 +102,13 @@
   <main class="content">
     <section class="profile">
       <div class="profile__avatar-container">
-          <img src="<%=require('./images/profile_icon.jpg')%>" alt="Аватар профиля."
-               class="profile__avatar">
-          <button class="profile__avatar-edit"></button>
+        <img src="#" alt="Аватар профиля" class="profile__avatar">
+        <button class="profile__avatar-edit"></button>
       </div>
       <div class="profile__info">
-        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <h1 class="profile__name">Загрузка...</h1>
         <button class="profile__button profile__button_type_edit" type="button"></button>
-        <p class="profile__status">Исследователь океана</p>
+        <p class="profile__status">Загрузка...</p>
       </div>
       <button class="profile__button profile__button_type_add" type="button"></button>
     </section>

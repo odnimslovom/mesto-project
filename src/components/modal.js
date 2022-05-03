@@ -1,26 +1,6 @@
-import {
-  profilePopup,
-  profileName,
-  profileStatus,
-  profilePopupInputName,
-  profilePopupInputStatus,
-  cardsAddPopup,
-  cardsPopupForm,
-  validationOptions,
-  popups,
-  cardInputList,
-  cardAddButton,
-  profileInputList,
-  profileButtonSubmit,
-  profileAvatar,
-  avatarPopup,
-  avatarButtonSubmit,
-  avatartPopupForm,
-  profilePopupForm, avatarPopupInputLink,
-} from "./variables.js";
-import {toggleButtonState} from "./validation";
-import {sendAvatarData, sendUserData} from "./api";
+import {popups} from "./variables.js";
 
+// Обработчики закрытия попапов
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
     if (evt.target.classList.contains('popup_opened')) {
@@ -32,29 +12,26 @@ popups.forEach((popup) => {
   });
 });
 
-export function openPopup(popup) {
+// Обработка открытия и закрытия попапов
+export const openPopup = (popup) => {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc);
-}
+};
 
-export function closePopup(popup) {
+export const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeByEsc);
-}
+};
 
-function closeByEsc(evt) {
+const closeByEsc = (evt) => {
   if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup);
   }
-}
+};
 
-function updateProfileEditForm() {
-  profilePopupInputName.value = profileName.textContent;
-  profilePopupInputStatus.value = profileStatus.textContent;
-}
-
-function removePopupErrors(popup) {
+// Обработка ошибок при переоткрытии попапа
+export const removePopupErrors = (popup) => {
   const errorList = popup.querySelectorAll('.popup__form-error');
   errorList.forEach(errorItem => {
       if (popup.contains(errorItem)) {
@@ -62,65 +39,10 @@ function removePopupErrors(popup) {
       }
     }
   );
-}
+};
 
-export function handleProfileEditClick() {
-  updateProfileEditForm(profilePopupInputName.value, profilePopupInputStatus.value);
-  toggleButtonState(profileInputList, profileButtonSubmit, validationOptions);
-  removePopupErrors(profilePopup);
-  openPopup(profilePopup);
-}
-
-export function handleProfileAvatarEditClick() {
-  openPopup(avatarPopup);
-}
-
-export function handleSubmitAvatar(event) {
-  event.preventDefault();
-  avatarButtonSubmit.textContent = 'Сохранение...';
-  sendAvatarData(avatarPopupInputLink.value).then((res) => {
-    updateAvatar(res.avatar);
-    closePopup(avatarPopup);
-  }).catch((error) => {
-    console.log(`Error: ${error.message}!!!`);
-  }).finally(() => {
-    avatarButtonSubmit.textContent = 'Сохранить';
-    avatartPopupForm.reset();
-  });
-}
-
-export function updateProfile(name, status) {
-  profileName.textContent = name;
-  profileStatus.textContent = status;
-}
-
-export function updateAvatar(avatarLink) {
-  profileAvatar.src = avatarLink;
-}
-
-export function handleSubmitProfileForm(event) {
-  event.preventDefault();
-  profileButtonSubmit.textContent = 'Сохранение...';
-  sendUserData(profilePopupInputName.value, profilePopupInputStatus.value)
-    .then((data) => {
-      updateProfile(data.name, data.about);
-      closePopup(profilePopup);
-    })
-    .catch((error) => {
-      console.log(`Error: ${error.message}!!!`);
-    }).finally(() => {
-    profileButtonSubmit.textContent = 'Сохранить';
-  });
-
-}
-
-export function handleProfileAddClick() {
-  toggleButtonState(cardInputList, cardAddButton, validationOptions);
-  removePopupErrors(cardsAddPopup);
-  openPopup(cardsAddPopup);
-}
-
-export function clearCardsPopupInfo() {
-  cardsPopupForm.reset();
-}
+// Очистка форм попапов
+export const clearPopupForm = (popupForm) => {
+  popupForm.reset();
+};
 

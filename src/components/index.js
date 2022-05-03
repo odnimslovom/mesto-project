@@ -2,23 +2,29 @@
 //webpack import
 import "../pages/index.css";
 
-import {renderStartCards, handleSubmitCardsForm} from "./cards.js";
+import {handleCardAddClick, handleSubmitCardsForm} from "./cards";
 import {
-  profileBtnEdit, profileBtnAdd, profilePopupForm, cardsPopupForm, validationOptions, profileBtnAvatarEdit, avatarPopup,
+  avatarPopup,
+  cardsPopupForm,
+  profileBtnAdd,
+  profileBtnAvatarEdit,
+  profileBtnEdit,
+  profilePopupForm,
+  validationOptions,
 } from "./variables.js";
-import {
-  handleProfileAddClick,
-  handleProfileEditClick,
-  handleSubmitProfileForm,
-  handleProfileAvatarEditClick,
-  handleSubmitAvatar
-} from "./modal.js";
+
 import {enableValidation} from "./validation";
-import {getUserData} from "./profile";
+import {
+  getUserData,
+  handleProfileAvatarEditClick,
+  handleProfileEditClick,
+  handleSubmitAvatar,
+  handleSubmitProfileForm,
+} from "./profile";
 
 profileBtnEdit.addEventListener('click', handleProfileEditClick);
 profileBtnAvatarEdit.addEventListener('click', handleProfileAvatarEditClick);
-profileBtnAdd.addEventListener('click', handleProfileAddClick);
+profileBtnAdd.addEventListener('click', handleCardAddClick);
 profilePopupForm.addEventListener('submit', handleSubmitProfileForm);
 cardsPopupForm.addEventListener('submit', handleSubmitCardsForm);
 avatarPopup.addEventListener('submit', handleSubmitAvatar);
