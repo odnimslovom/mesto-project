@@ -28,6 +28,30 @@ import {
 import {deleteCardData, deleteLikeData, requestCardsData, sendCardData, sendLikeData} from "./api";
 import {clearPopupForm, closePopup} from "./modal";
 
+// Серверная обработка нажатия на корзину
+const handleDeleteIconClick = (cardId, cardElement) => {
+  deleteCardData(cardId)
+    .then(() => handleDeleteCard(cardElement))
+    .catch((error) => console.log(`Error: ${error.message}!!!`));
+};
+
+// Серверная обработка нажатия на лайк
+const handleLikeClick = (cardId, cardLike, cardLikesCounter) => {
+  if (cardLike.classList.contains('cards__like_active')) {
+    deleteLikeData(cardId)
+      .then((res) => {
+        handleLike(cardLike, cardLikesCounter, res.likes.length);
+      })
+      .catch((error) => console.log(`Error: ${error.message}!!!`));
+  } else {
+    sendLikeData(cardId)
+      .then((res) => {
+        handleLike(cardLike, cardLikesCounter, res.likes.length);
+      })
+      .catch((error) => console.log(`Error: ${error.message}!!!`));
+  }
+};
+
 // Загрузка и отрисовка начавльных карточек
 export const renderStartCards = (userId) => {
   requestCardsData().then((data) => {
@@ -39,7 +63,7 @@ export const renderStartCards = (userId) => {
           likeCounter: card.likes.length,
           isDeletable: card.owner._id === userId,
           isLiked: card.likes.find(item => item._id === userId) !== undefined
-        }, card._id);
+        }, card._id, handleDeleteIconClick, handleLikeClick);
     });
   }).catch((error) => console.log(`Error: ${error.message}!!!`));
 };
@@ -50,7 +74,8 @@ const handleSubmitCardsForm = (event) => {
   cardAddButton.textContent = 'Сохранение...';
   sendCardData(cardsPopupInputName.value, cardsPopupInputLink.value)
     .then((data) => {
-      addCard({name: data.name, link: data.link, isDeletable: true}, data._id);
+      addCard({name: data.name, link: data.link, isDeletable: true},
+        data._id, handleDeleteIconClick, handleLikeClick);
       closePopup(cardsAddPopup);
     })
     .catch((error) => console.log(`Error: ${error.message}!!!`))
@@ -58,30 +83,6 @@ const handleSubmitCardsForm = (event) => {
       clearPopupForm(cardsPopupForm);
       cardAddButton.textContent = 'Сохранить';
     });
-};
-
-// Серверная обработка нажатия на корзину
-export const handleDeleteIconClick = (cardId, cardElement) => {
-  deleteCardData(cardId)
-    .then(handleDeleteCard(cardElement))
-    .catch((error) => console.log(`Error: ${error.message}!!!`));
-};
-
-// Серверная обработка нажатия на лайк
-export const handleLikeClick = (cardId, cardLike, cardLikesCounter) => {
-  if (cardLike.classList.contains('cards__like_active')){
-    deleteLikeData(cardId)
-      .then((res) => {
-        handleLike(cardLike, cardLikesCounter, res.likes.length);
-      })
-      .catch((error) => console.log(`Error: ${error.message}!!!`));
-  } else  {
-    sendLikeData(cardId)
-      .then((res) => {
-        handleLike(cardLike, cardLikesCounter, res.likes.length);
-      })
-      .catch((error) => console.log(`Error: ${error.message}!!!`));
-  }
 };
 
 profileBtnEdit.addEventListener('click', handleProfileEditClick);
@@ -93,6 +94,4 @@ avatarPopup.addEventListener('submit', handleSubmitAvatar);
 
 getUserData();
 enableValidation(validationOptions);
-
-
 

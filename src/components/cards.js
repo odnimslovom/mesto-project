@@ -12,19 +12,12 @@ import {
 
 import {openPopup, removePopupErrors} from "./modal";
 import {toggleButtonState} from "./validation";
-import {handleDeleteIconClick, handleLikeClick} from "./index";
 
 // Открыть попап добавления карточки
 export const handleCardAddClick = () => {
   toggleButtonState(cardInputList, cardAddButton, validationOptions);
   removePopupErrors(cardsAddPopup);
   openPopup(cardsAddPopup);
-};
-
-// Добавление карточки в DOM
-export const addCard = (cardData, cardId) => {
-  const cardElement = createCardElement(cardData, cardId);
-  cardsList.prepend(cardElement);
 };
 
 // Удаление карточки из Dom
@@ -39,8 +32,14 @@ export const handleLike = (cardLike, likeCounter, numLikes) => {
   cardLike.classList.toggle('cards__like_active');
 };
 
+// Добавление карточки в DOM
+export const addCard = (cardData, cardId, handleDeleteIconClick, handleLikeClick) => {
+  const cardElement = createCardElement(cardData, cardId, handleDeleteIconClick, handleLikeClick);
+  cardsList.prepend(cardElement);
+};
+
 // Создание карточки
-const createCardElement = (cardData, cardId) => {
+const createCardElement = (cardData, cardId, handleDeleteIconClick, handleLikeClick) => {
   const cardElement = cardTemplate.querySelector('.cards__item').cloneNode(true);
   const cardImage = cardElement.querySelector('.cards__image');
   const cardTitle = cardElement.querySelector('.cards__title');
