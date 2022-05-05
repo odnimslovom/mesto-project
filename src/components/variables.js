@@ -38,6 +38,9 @@ export const cardsPopupInputLink = cardsAddPopup.querySelector('.popup__form-ite
 export const cardTemplate = document.querySelector("#template__card").content;
 export const cardInputList = Array.from(cardsAddPopup.querySelectorAll(validationOptions.inputElementClass));
 export const cardAddButton = cardsAddPopup.querySelector(validationOptions.buttonElementClass);
+// confirm delete popup
+export const confirmDelPopup = document.querySelector('.popup_type_confirm');
+export const confirmDelButton = confirmDelPopup.querySelector(validationOptions.buttonElementClass);
 // image popup
 export const imagePopup = document.querySelector('.popup_type_show-image');
 export const imagePopupImg = imagePopup.querySelector('.popup__image');

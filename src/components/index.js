@@ -9,7 +9,7 @@ import {
   cardsAddPopup,
   cardsPopupForm,
   cardsPopupInputLink,
-  cardsPopupInputName,
+  cardsPopupInputName, confirmDelPopup,
   profileBtnAdd,
   profileBtnAvatarEdit,
   profileBtnEdit,
@@ -26,13 +26,23 @@ import {
   handleSubmitProfileForm,
 } from "./profile";
 import {deleteCardData, deleteLikeData, requestCardsData, sendCardData, sendLikeData} from "./api";
-import {clearPopupForm, closePopup} from "./modal";
+import {clearPopupForm, closePopup, openPopup} from "./modal";
 
 // Серверная обработка нажатия на корзину
 const handleDeleteIconClick = (cardId, cardElement) => {
-  deleteCardData(cardId)
-    .then(() => handleDeleteCard(cardElement))
-    .catch((error) => console.log(`Error: ${error.message}!!!`));
+  openPopup(confirmDelPopup);
+  confirmDelPopup.addEventListener('submit', handleSubmitDel);
+  function handleSubmitDel() {
+    deleteCardData(cardId)
+      .then(()=> {
+        handleDeleteCard(cardElement);
+      })
+      .catch((error) => console.log(`Error: ${error.message}!!!`))
+      .finally(()=> {
+        closePopup(confirmDelPopup);
+        confirmDelPopup.removeEventListener('submit', handleSubmitDel);
+      });
+  }
 };
 
 // Серверная обработка нажатия на лайк
@@ -84,6 +94,7 @@ const handleSubmitCardsForm = (event) => {
       cardAddButton.textContent = 'Сохранить';
     });
 };
+
 
 profileBtnEdit.addEventListener('click', handleProfileEditClick);
 profileBtnAvatarEdit.addEventListener('click', handleProfileAvatarEditClick);

@@ -2,7 +2,7 @@
   display: block;
   min-width: 22px;
   min-height: 19px;
-  background: border-box url(../../../../images/black_heart.svg) center/cover no-repeat;
+  background: url(../../../../images/black_heart.svg) center/cover no-repeat;
   opacity: 1;
 }
 
