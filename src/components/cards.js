@@ -11,11 +11,11 @@ import {
   imagePopupImg,
   imagePopupText,
   validationOptions
-} from "./variables";
+} from "../utils/variables";
 
 import {clearPopupForm, closePopup, openPopup, removePopupErrors} from "./modal";
-import {deleteCardData, deleteLikeData, requestCardsData, sendCardData, sendLikeData} from "./api";
-import {toggleButtonState} from "./validation";
+import {deleteCardData, deleteLikeData, requestCardsData, sendCardData, sendLikeData} from "./API";
+import {toggleButtonState} from "./FormValidator";
 
 // Загрузка и отрисовка начавльных карточек
 export const renderStartCards = (userId) => {

@@ -42,6 +42,8 @@ export const cardAddButton = cardsAddPopup.querySelector(validationOptions.butto
 export const imagePopup = document.querySelector('.popup_type_show-image');
 export const imagePopupImg = imagePopup.querySelector('.popup__image');
 export const imagePopupText = imagePopup.querySelector('.popup__text');
-// api variables
-export const API_URL = 'https://nomoreparties.co/v1/plus-cohort-9/';
-export const AUTH_TOKEN = '30ee5c2b-3c10-4367-af03-f8ff84e704e6';
+// api config
+export const apiConfig = {
+  API_URL : 'https://nomoreparties.co/v1/plus-cohort-9/',
+  AUTH_TOKEN : '30ee5c2b-3c10-4367-af03-f8ff84e704e6'
+}

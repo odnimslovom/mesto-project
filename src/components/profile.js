@@ -1,4 +1,4 @@
-import {requestUserData, sendAvatarData, sendUserData} from "./api";
+import {requestUserData, sendAvatarData, sendUserData} from "./API";
 import {clearPopupForm, closePopup, openPopup, removePopupErrors} from "./modal";
 import {renderStartCards} from "./cards";
 import {
@@ -15,8 +15,8 @@ import {
   profilePopupInputStatus,
   profileStatus,
   validationOptions
-} from "./variables";
-import {toggleButtonState} from "./validation";
+} from "../utils/variables";
+import {toggleButtonState} from "./FormValidator";
 
 // Первоначальная загрузка данных с сервера
 export const getUserData = () => {
