@@ -34,7 +34,7 @@ export default class PopupWithForm extends Popup {
     });
   }
 
-  resetFormErrors(){
+  resetFormErrors() {
     const errorList = this._form.querySelectorAll('.popup__form-error');
     errorList.forEach(errorItem => {
         if (this._form.contains(errorItem)) {

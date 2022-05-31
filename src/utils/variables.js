@@ -1,13 +1,12 @@
-export const popups = document.querySelectorAll('.popup');
 // page profile
 export const profile = document.querySelector('.profile');
-export const profileBtnEdit = profile.querySelector('.profile__button_type_edit');
+export const userEditBtn = profile.querySelector('.profile__button_type_edit');
 export const profileName = profile.querySelector('.profile__name');
 export const profileStatus = profile.querySelector('.profile__status');
-export const profileBtnAdd = profile.querySelector('.profile__button_type_add');
+export const addCardBtn = profile.querySelector('.profile__button_type_add');
 //avatar
 export const profileAvatar = profile.querySelector('.profile__avatar');
-export const profileBtnAvatarEdit = profile.querySelector('.profile__avatar-edit');
+export const avatarEditBtn = profile.querySelector('.profile__avatar-edit');
 export const avatarPopup = document.querySelector('.popup_type_add-avatar');
 export const avatarPopupForm = avatarPopup.querySelector('.popup__form');
 export const avatarPopupInputLink = avatarPopup.querySelector('.popup__form-item_type_link');
@@ -29,21 +28,15 @@ export const profilePopupInputStatus = profilePopupForm.querySelector('.popup__f
 export const profileInputList = Array.from(profilePopup.querySelectorAll(validationOptions.inputElementClass));
 export const profileButtonSubmit = profilePopup.querySelector(validationOptions.buttonElementClass);
 //  cards
-export const cardsList = document.querySelector('.cards__list');
+export const cardList = document.querySelector('.cards__list');
 // add-card popup
 export const cardsAddPopup = document.querySelector('.popup_type_add-card');
 export const cardsPopupForm = cardsAddPopup.querySelector('.popup__form');
 export const cardsPopupInputName = cardsAddPopup.querySelector('.popup__form-item_type_name');
 export const cardsPopupInputLink = cardsAddPopup.querySelector('.popup__form-item_type_link');
-export const cardTemplate = document.querySelector("#template__card").content;
-export const cardInputList = Array.from(cardsAddPopup.querySelectorAll(validationOptions.inputElementClass));
+export const cardTemplateSelector = document.querySelector("#template__card");
 export const cardAddButton = cardsAddPopup.querySelector(validationOptions.buttonElementClass);
 // image popup
 export const imagePopup = document.querySelector('.popup_type_show-image');
 export const imagePopupImg = imagePopup.querySelector('.popup__image');
 export const imagePopupText = imagePopup.querySelector('.popup__text');
-// api config
-export const apiConfig = {
-  API_URL : 'https://nomoreparties.co/v1/plus-cohort-9/',
-  AUTH_TOKEN : '30ee5c2b-3c10-4367-af03-f8ff84e704e6'
-}

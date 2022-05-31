@@ -6,10 +6,10 @@ export default class FormValidator {
 
   // Включение валидации форм
   enableValidation() {
-      this._formElement.addEventListener('submit', function (evt) {
-        evt.preventDefault();
-      });
-      this._formElement._setEventListeners(this._formElement, this._validationOptions);
+    this._formElement.addEventListener('submit', function (evt) {
+      evt.preventDefault();
+    });
+    this._setEventListeners(this._formElement, this._validationOptions);
   }
 
   // Установка слушателей валидации
