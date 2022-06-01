@@ -20,14 +20,14 @@
     <h2 class="popup__title">Редактировать профиль</h2>
     <form class="popup__form" name="profile-form">
       <label class="popup__form-label">
-        <input class="popup__form-input popup__form-item_type_name" id="profile-name" type="text" name="name"
+        <input class="popup__form-input popup__form-item_type_name" id="name" type="text" name="name"
                placeholder="Имя" minlength="2" maxlength="40" required autocomplete="off">
-        <span class="popup__form-error" id="profile-name-error"></span>
+        <span class="popup__form-error" id="name-error"></span>
       </label>
       <label class="popup__form-label">
-        <input class="popup__form-input popup__form-item_type_status" id="profile-status" type="text" name="status"
+        <input class="popup__form-input popup__form-item_type_status" id="about" type="text" name="status"
                placeholder="О себе" minlength="2" maxlength="200" required autocomplete="off">
-        <span class="popup__form-error" id="profile-status-error"></span>
+        <span class="popup__form-error" id="about-error"></span>
       </label>
       <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
     </form>
@@ -41,14 +41,14 @@
     <h2 class="popup__title">Новое место</h2>
     <form class="popup__form" name="card-form">
       <label class="popup__form-label">
-        <input class="popup__form-input popup__form-item_type_name" id="place-name" type="text" name="name"
+        <input class="popup__form-input popup__form-item_type_name" id="place" type="text" name="name"
                placeholder="Название" minlength="2" maxlength="30" required autocomplete="off">
-        <span class="popup__form-error" id="place-name-error"></span>
+        <span class="popup__form-error" id="place-error"></span>
       </label>
       <label class="popup__form-label">
-        <input class="popup__form-input popup__form-item_type_link" id="place-url" type="url" name="link"
+        <input class="popup__form-input popup__form-item_type_link" id="url" type="url" name="link"
                placeholder="Ссылка на картинку" required autocomplete="off">
-        <span class="popup__form-error" id="place-url-error"></span>
+        <span class="popup__form-error" id="url-error"></span>
       </label>
       <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
     </form>
@@ -62,9 +62,9 @@
     <h2 class="popup__title">Обновить аватар</h2>
     <form class="popup__form" name="avatar-form">
       <label class="popup__form-label">
-        <input class="popup__form-input popup__form-item_type_link" id="avatar-url" type="url" name="link"
+        <input class="popup__form-input popup__form-item_type_link" id="avatar" type="url" name="link"
                placeholder="Ссылка на аватар" required autocomplete="off">
-        <span class="popup__form-error" id="avatar-url-error"></span>
+        <span class="popup__form-error" id="avatar-error"></span>
       </label>
       <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
     </form>
@@ -72,15 +72,15 @@
 </div>
 
 <!-- Подтверждение удаления карточки-->
-<div class="popup popup_type_confirm">
-  <div class="popup__container">
-    <button class="popup__button popup__button_type_close" type="button"></button>
-    <h2 class="popup__title">Вы уверены?</h2>
-    <form class="popup__form" name="confirm-form">
-      <button class="popup__button popup__button_type_submit" type="submit">Да</button>
-    </form>
-  </div>
-</div>
+<!--<div class="popup popup_type_confirm">-->
+<!--  <div class="popup__container">-->
+<!--    <button class="popup__button popup__button_type_close" type="button"></button>-->
+<!--    <h2 class="popup__title">Вы уверены?</h2>-->
+<!--    <form class="popup__form" name="confirm-form">-->
+<!--      <button class="popup__button popup__button_type_submit" type="submit">Да</button>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
 
 <!-- Просмотр карточки-->
 <div class="popup popup_type_show-image">

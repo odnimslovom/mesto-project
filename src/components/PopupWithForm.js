@@ -1,10 +1,11 @@
 import Popup from "./Popup";
 
 export default class PopupWithForm extends Popup {
-  constructor(popup, form, formSubmitHandler) {
+  constructor(popup, form, formSubmitter, formSubmitHandler) {
     super(popup);
     this._form = form;
     this._formSubmitHandler = formSubmitHandler;
+    this._formSubmitter = formSubmitter;
     this._inputList = this._form.querySelectorAll('.popup__form-input');
   }
 
@@ -34,14 +35,8 @@ export default class PopupWithForm extends Popup {
     });
   }
 
-  resetFormErrors() {
-    const errorList = this._form.querySelectorAll('.popup__form-error');
-    errorList.forEach(errorItem => {
-        if (this._form.contains(errorItem)) {
-          errorItem.classList.remove('popup__form-error_type_active');
-        }
-      }
-    );
+  renderSubmitter(isLoad){
+    this._formSubmitter.textContent = isLoad ? "Сохранение..." : "Сохранить";
   }
 
 }

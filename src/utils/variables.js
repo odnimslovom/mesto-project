@@ -35,7 +35,7 @@ export const cardsPopupForm = cardsAddPopup.querySelector('.popup__form');
 export const cardsPopupInputName = cardsAddPopup.querySelector('.popup__form-item_type_name');
 export const cardsPopupInputLink = cardsAddPopup.querySelector('.popup__form-item_type_link');
 export const cardTemplateSelector = document.querySelector("#template__card");
-export const cardAddButton = cardsAddPopup.querySelector(validationOptions.buttonElementClass);
+export const cardAddSubmitButton = cardsAddPopup.querySelector(validationOptions.buttonElementClass);
 // image popup
 export const imagePopup = document.querySelector('.popup_type_show-image');
 export const imagePopupImg = imagePopup.querySelector('.popup__image');

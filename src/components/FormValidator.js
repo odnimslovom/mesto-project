@@ -66,6 +66,24 @@ export default class FormValidator {
     errorElement.textContent = '';
   }
 
+  resetFormErrors() {
+    const errorList = this._formElement.querySelectorAll('.popup__form-error');
+    errorList.forEach(errorItem => {
+        if (this._formElement.contains(errorItem)) {
+          errorItem.classList.remove('popup__form-error_type_active');
+        }
+      }
+    );
+
+    // const errorList = this._form.querySelectorAll('.popup__form-error');
+    // errorList.forEach(errorItem => {
+    //     if (this._form.contains(errorItem)) {
+    //       errorItem.classList.remove('popup__form-error_type_active');
+    //     }
+    //   }
+    // );
+  }
+
 }
 
 
