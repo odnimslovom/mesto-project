@@ -9,9 +9,10 @@ export default class Card {
     this._cardOwner = cardData.owner._id;
     this._userId = userId;
     this._api = api;
-    this._cardClickHandler = cardClickHandler;
+    this._cardClickHandler = cardClickHandler; // Обработчик просмотра изображения карточки
   }
 
+  // Клонирование шаблона карточки
   _getCardElement() {
     return this._cardTemplate
       .content
@@ -19,6 +20,7 @@ export default class Card {
       .cloneNode(true);
   }
 
+  // Создание элемента карточки
   generateCard() {
     this._cardElement = this._getCardElement();
 

@@ -14,7 +14,6 @@ export default class FormValidator {
     this._setEventListeners();
   }
 
-  // Установка слушателей валидации
   _setEventListeners() {
     this._toggleButtonState();
     this._inputList.forEach(inputElement => {
@@ -66,6 +65,7 @@ export default class FormValidator {
     errorElement.textContent = '';
   }
 
+  //Сброс ошибок невалидной формы
   resetFormErrors() {
     this._toggleButtonState();
     this._inputList.forEach(inputElement => {

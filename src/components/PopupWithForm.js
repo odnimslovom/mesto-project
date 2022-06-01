@@ -9,6 +9,7 @@ export default class PopupWithForm extends Popup {
     this._inputList = this._form.querySelectorAll('.popup__form-input');
   }
 
+  // Сбор и установка информации инпутов
   _getFormData() {
     const formData = {};
     this._inputList.forEach(input => {
@@ -23,6 +24,7 @@ export default class PopupWithForm extends Popup {
     });
   }
 
+
   resetFormData() {
     this._form.reset();
   }
@@ -35,6 +37,7 @@ export default class PopupWithForm extends Popup {
     });
   }
 
+  // Отрисовка процесса загрузки на кнопке
   renderSubmitter(isLoad){
     this._formSubmitter.textContent = isLoad ? "Сохранение..." : "Сохранить";
   }

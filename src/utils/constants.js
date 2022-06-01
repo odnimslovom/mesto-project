@@ -9,7 +9,6 @@ export const profileAvatar = profile.querySelector('.profile__avatar');
 export const avatarEditBtn = profile.querySelector('.profile__avatar-edit');
 export const avatarPopup = document.querySelector('.popup_type_add-avatar');
 export const avatarPopupForm = avatarPopup.querySelector('.popup__form');
-export const avatarPopupInputLink = avatarPopup.querySelector('.popup__form-item_type_link');
 export const avatarButtonSubmit = avatarPopup.querySelector('.popup__button_type_submit');
 //Validation options
 export const validationOptions = {
@@ -23,20 +22,13 @@ export const validationOptions = {
 // profile popup
 export const profilePopup = document.querySelector('.popup_type_edit-profile');
 export const profilePopupForm = profilePopup.querySelector('.popup__form');
-export const profilePopupInputName = profilePopupForm.querySelector('.popup__form-item_type_name');
-export const profilePopupInputStatus = profilePopupForm.querySelector('.popup__form-item_type_status');
-export const profileInputList = Array.from(profilePopup.querySelectorAll(validationOptions.inputElementClass));
 export const profileButtonSubmit = profilePopup.querySelector(validationOptions.buttonElementClass);
 //  cards
 export const cardList = document.querySelector('.cards__list');
 // add-card popup
 export const cardsAddPopup = document.querySelector('.popup_type_add-card');
 export const cardsPopupForm = cardsAddPopup.querySelector('.popup__form');
-export const cardsPopupInputName = cardsAddPopup.querySelector('.popup__form-item_type_name');
-export const cardsPopupInputLink = cardsAddPopup.querySelector('.popup__form-item_type_link');
 export const cardTemplateSelector = document.querySelector("#template__card");
 export const cardAddSubmitButton = cardsAddPopup.querySelector(validationOptions.buttonElementClass);
 // image popup
 export const imagePopup = document.querySelector('.popup_type_show-image');
-export const imagePopupImg = imagePopup.querySelector('.popup__image');
-export const imagePopupText = imagePopup.querySelector('.popup__text');

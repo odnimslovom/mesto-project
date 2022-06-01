@@ -1,4 +1,4 @@
-export default class API {
+class API {
   constructor(apiConfig) {
     this._apiConfig = apiConfig;
   }
@@ -92,9 +92,9 @@ export default class API {
 
 export const api = new API({
   baseUrl: 'https://nomoreparties.co/v1/plus-cohort-9/',
-    headers: {
+  headers: {
     authorization: '30ee5c2b-3c10-4367-af03-f8ff84e704e6',
-      'Content-Type': 'application/json'
+    'Content-Type': 'application/json'
   }
 });
 
