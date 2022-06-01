@@ -70,7 +70,8 @@ export default class Card {
 
   _deleteCard() {
     this._api.deleteCardData(this._cardId)
-      .then(this._cardElement.remove());
+      .then(() => this._cardElement.remove())
+      .catch((error) => console.log(`Error: ${error.message}!!!`));
   }
 
 }
