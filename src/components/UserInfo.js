@@ -4,6 +4,7 @@ export default class UserInfo {
     this._nameSelector = nameSelector;
     this._aboutSelector = aboutSelector;
     this._avatarSelector = avatarSelector;
+    this._id = undefined;
   }
 
   getUserInfo() {

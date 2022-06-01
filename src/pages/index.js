@@ -1,6 +1,8 @@
-//webpack import
+// webpack import.........................................//
 import "./index.css";
+//........................................................//
 
+// Переменные.............................................//
 import {
   addCardBtn, avatarButtonSubmit,
   avatarEditBtn,
@@ -26,7 +28,9 @@ import {api} from "../components/API";
 import FormValidator from "../components/FormValidator";
 import Section from "../components/Section";
 import Card from "../components/Card";
+//........................................................//
 
+// Настройка попапов......................................//
 const avtPopup = new PopupWithForm(avatarPopup, avatarPopupForm, avatarButtonSubmit, avatarSubmitHandler);
 const avtPopupFormValidator = new FormValidator(validationOptions, avatarPopupForm);
 avtPopupFormValidator.enableValidation();
@@ -44,7 +48,10 @@ crdPopup.setEventListeners();
 
 const imgPopup = new PopupWithImage(imagePopup);
 imgPopup.setEventListeners();
+//.........................................................//
 
+
+// Установка обработчиков кнопок...........................//
 avatarEditBtn.addEventListener('click', () => {
   avtPopupFormValidator.resetFormErrors();
   avtPopup.open();
@@ -60,10 +67,12 @@ addCardBtn.addEventListener('click', () => {
   crdPopupFormValidator.resetFormErrors();
   crdPopup.open();
 });
+//.........................................................//
 
+
+// Загрузка профиля и стартовых карточек...................//
 const userInfo = new UserInfo(profileName, profileStatus, profileAvatar);
 const cardContainer = new Section({renderer: card => renderCard(card)}, cardList);
-
 Promise.all([api.requestUserData(), api.requestCardsData()])
   .then(([userData, cardsData]) => {
     userInfo.setUserInfo(userData);
@@ -74,7 +83,9 @@ function renderCard(card) {
   const cardItem = new Card(cardTemplateSelector, card, userInfo.getUserInfo().id, api, cardClickHandler);
   return cardItem.generateCard();
 }
+//.........................................................//
 
+// Обработчики сабмитов форм...............................//
 function cardClickHandler(cardName, cardLink) {
   imgPopup.open(cardName, cardLink);
 }
@@ -113,4 +124,4 @@ function cardSubmitHandler(data) {
     .finally(() => crdPopup.renderSubmitter(false));
   crdPopup.resetFormData();
 }
-
+//.........................................................//
